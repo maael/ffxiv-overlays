@@ -1,0 +1,27 @@
+{
+  "name": "ffxiv-overlays",
+  "version": "1.0.0",
+  "description": "A collection of ACT overlays for FFXIV",
+  "main": "index.js",
+  "repository": "https://github.com/maael/ffxiv-overlays",
+  "author": "Matthew Elphick <matt.a.elphy@gmail.com>",
+  "license": "WTFPL",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "deploy": "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix out origin gh-pages"
+  },
+  "dependencies": {
+    "next": "^9.0.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@types/node": "^12.6.8",
+    "@types/react": "^16.8.23",
+    "typescript": "^3.5.3"
+  }
+}
