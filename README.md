@@ -14,8 +14,9 @@ Put [https://maael.github.io/ffxiv-overlays/t/\<theme\>](https://maael.github.io
 2. `cd ffxiv-overlays`
 3. `yarn`
 4. `yarn dev`
-5. Open browser to `http://localhost:5000`
-6. :sparkles:
+5. Open browser to `http://localhost:3000`
+6. Add `?simulator` as a query param to force themes to use simulated values
+7. :sparkles:
 
 ## Deployment
 
