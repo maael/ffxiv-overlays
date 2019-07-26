@@ -35,7 +35,7 @@ function updateEvent(e: any) {
   return e.detail;
 }
 
-export default () => {
+export default (ms: number = 3000) => {
   const baseEvent = new CustomEvent(OVERLAY_EVENT, {detail: getEvent()})
   document.dispatchEvent(baseEvent);
   console.info('displatch:start', baseEvent.detail);
@@ -43,5 +43,5 @@ export default () => {
     const e = new CustomEvent(OVERLAY_EVENT, {detail: updateEvent(baseEvent)})
     document.dispatchEvent(e);
     console.info('dispatch:update', e.detail);
-  }, 3000);
+  }, ms);
 }
