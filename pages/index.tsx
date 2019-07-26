@@ -10,6 +10,7 @@ export default () => (
     <h1>Mael'a Niwa's Overlay Themes</h1>
     <ul>
       <li><Link href='/t/base'>Base</Link></li>
+      <li><Link href='/t/minidps'>Mini DPS</Link></li>
     </ul>
   </>
 );
