@@ -3,6 +3,14 @@ import createEncounter from './createEncounter';
 
 const OVERLAY_EVENT = 'onOverlayDataUpdate';
 
+const START_TIME = Date.now();
+
+function millisToMinutesAndSeconds(millis: number) {
+  const minutes = Math.floor(millis / 60000);
+  const seconds = Number(((millis % 60000) / 1000).toFixed(0));
+  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+}
+
 function getEvent() {
   return {
     Encounter: createEncounter(),
@@ -12,7 +20,7 @@ function getEvent() {
 }
 
 function updateEvent(e: any) {
-  const duration = `04:${[...(Date.now().toString())].reverse().slice(0, 2).join('')}`;
+  const duration = millisToMinutesAndSeconds(Date.now() - START_TIME);
   e.detail.Encounter.duration = duration;
   Object.keys(e.detail.Combatant).forEach((k) => {
     e.detail.Combatant[k].duration = duration;

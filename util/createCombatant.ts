@@ -6,7 +6,7 @@ function createCombatant (_: unknown, i: number): {[k: string]: Partial<Record<C
       "n": "\n",
       "t": "\t",
       "name": "YOU",
-      "duration": "04:24",
+      "duration": "00:00",
       "DURATION": "264",
       "damage": "5094",
       "damage-m": "0.01",

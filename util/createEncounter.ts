@@ -4,7 +4,7 @@ export default () => ({
   "n": "\n",
   "t": "\t",
   "title": "Test Encounter",
-  "duration": "04:51",
+  "duration": "00:00",
   "DURATION": "291",
   "damage": "31867",
   "damage-m": "0.03",
