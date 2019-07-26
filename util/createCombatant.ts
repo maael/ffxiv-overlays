@@ -5,7 +5,7 @@ function createCombatant (_: unknown, i: number): {[k: string]: Partial<Record<C
     [`YOU ${i}`]: {
       "n": "\n",
       "t": "\t",
-      "name": "YOU",
+      "name": `YOU ${i}`,
       "duration": "00:00",
       "DURATION": "0",
       "damage": "0",
