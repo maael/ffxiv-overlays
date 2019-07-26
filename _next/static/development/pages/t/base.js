@@ -3913,8 +3913,8 @@ function createCombatant(_, i) {
     "t": "\t",
     "name": "YOU",
     "duration": "00:00",
-    "DURATION": "264",
-    "damage": "5094",
+    "DURATION": "0",
+    "damage": "0",
     "damage-m": "0.01",
     "DAMAGE-k": "5",
     "DAMAGE-m": "0",
@@ -4001,8 +4001,8 @@ __webpack_require__.r(__webpack_exports__);
     "t": "\t",
     "title": "Test Encounter",
     "duration": "00:00",
-    "DURATION": "291",
-    "damage": "31867",
+    "DURATION": "0",
+    "damage": "0",
     "damage-m": "0.03",
     "DAMAGE-k": "32",
     "DAMAGE-m": "0",
@@ -4048,6 +4048,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./util/random.ts":
+/*!************************!*\
+  !*** ./util/random.ts ***!
+  \************************/
+/*! exports provided: randomBetween */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "randomBetween", function() { return randomBetween; });
+function randomBetween(min, max) {
+  return min + Math.floor(Math.random() * (max - min));
+}
+
+/***/ }),
+
 /***/ "./util/simulator.ts":
 /*!***************************!*\
   !*** ./util/simulator.ts ***!
@@ -4063,6 +4079,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _createCombatant__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./createCombatant */ "./util/createCombatant.ts");
 /* harmony import */ var _createEncounter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./createEncounter */ "./util/createEncounter.ts");
+/* harmony import */ var _random__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./random */ "./util/random.ts");
+
 
 
 
@@ -4086,11 +4104,17 @@ function getEvent() {
 }
 
 function updateEvent(e) {
-  var duration = millisToMinutesAndSeconds(_babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_1___default()() - START_TIME);
+  var duration_ms = _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_1___default()() - START_TIME;
+  var duration = millisToMinutesAndSeconds(duration_ms);
+  e.detail.Encounter.damage = 0;
   e.detail.Encounter.duration = duration;
+  e.detail.Encounter.DURATION = duration_ms;
 
   _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0___default()(e.detail.Combatant).forEach(function (k) {
     e.detail.Combatant[k].duration = duration;
+    e.detail.Combatant[k].DURATION = duration_ms;
+    e.detail.Combatant[k].damage = Object(_random__WEBPACK_IMPORTED_MODULE_4__["randomBetween"])(2000, 9000);
+    e.detail.Encounter.damage += e.detail.Combatant[k].damage;
   });
 
   return e.detail;
@@ -4113,7 +4137,7 @@ function updateEvent(e) {
 
 /***/ }),
 
-/***/ 2:
+/***/ 0:
 /*!******************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Ft%2Fbase&absolutePagePath=%2FUsers%2Fmatthew.elphick%2Fpersonal%2Fffxiv-overlays%2Fpages%2Ft%2Fbase.tsx ***!
   \******************************************************************************************************************************************************/
@@ -4136,5 +4160,5 @@ module.exports = dll_7aff549c98b978433226;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[0,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=base.js.map
