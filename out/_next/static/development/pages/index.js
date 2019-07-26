@@ -27,7 +27,7 @@ var _jsxFileName = "/Users/matthew.elphick/personal/ffxiv-overlays/components/Li
 
   return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     href: href,
-    as: "".concat("").concat(href)
+    as: "".concat(!href.startsWith('http') && !href.startsWith('//') ? "" : '').concat(href)
   }, props, {
     __source: {
       fileName: _jsxFileName,
