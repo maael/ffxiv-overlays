@@ -209,4 +209,5 @@ export enum CombatantOptions {
   NAME_TRUNC13 = "NAME13",
   NAME_TRUNC14 = "NAME14",
   NAME_TRUNC15 = "NAME15",
+  CUSTOM_ACTUAL_HEALING = "custom_actual_healing",
 }
