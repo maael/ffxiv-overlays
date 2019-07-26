@@ -38,10 +38,10 @@ function updateEvent(e: any) {
 export default (ms: number = 3000) => {
   const baseEvent = new CustomEvent(OVERLAY_EVENT, {detail: getEvent()})
   document.dispatchEvent(baseEvent);
-  console.info('displatch:start', baseEvent.detail);
+  if (window.location.search.includes('debug')) console.info('displatch:start', baseEvent.detail);
   setInterval(() => {
     const e = new CustomEvent(OVERLAY_EVENT, {detail: updateEvent(baseEvent)})
     document.dispatchEvent(e);
-    console.info('dispatch:update', e.detail);
+    if (window.location.search.includes('debug')) console.info('dispatch:update', e.detail);
   }, ms);
 }

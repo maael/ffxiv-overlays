@@ -5,7 +5,7 @@ module.exports = {
     return {
       '/': { page: '/' },
       '/t/base': { page: '/t/base' },
-      '/t/base': { page: '/t/base', query: {simulator: true} }
+      '/t/minidps': { page: '/t/minidps' },
     }
   },
   assetPrefix: !debug ? '/ffxiv-overlays' : ''
