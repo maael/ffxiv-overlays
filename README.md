@@ -32,7 +32,7 @@ Super minimal theme of player name, job, and damage.
 
 ### Notes
 
-- When you add a new page you will have to add it to [next.config.js](./next-config.js), adding an entry to the exportPathMap that looks like this:
+- When you add a new page you will have to add it to [next.config.js](./next.config.js), adding an entry to the exportPathMap that looks like this:
 
 ```js
   '/t/<theme>': { page: '/t/<theme>' },
