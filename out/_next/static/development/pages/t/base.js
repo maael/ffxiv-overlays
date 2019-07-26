@@ -3912,7 +3912,7 @@ function createCombatant(_, i) {
     "n": "\n",
     "t": "\t",
     "name": "YOU",
-    "duration": "04:24",
+    "duration": "00:00",
     "DURATION": "264",
     "damage": "5094",
     "damage-m": "0.01",
@@ -4000,7 +4000,7 @@ __webpack_require__.r(__webpack_exports__);
     "n": "\n",
     "t": "\t",
     "title": "Test Encounter",
-    "duration": "04:51",
+    "duration": "00:00",
     "DURATION": "291",
     "damage": "31867",
     "damage-m": "0.03",
@@ -4061,26 +4061,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/date/now */ "./node_modules/@babel/runtime-corejs2/core-js/date/now.js");
 /* harmony import */ var _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js");
-/* harmony import */ var _createCombatant__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./createCombatant */ "./util/createCombatant.ts");
-/* harmony import */ var _createEncounter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./createEncounter */ "./util/createEncounter.ts");
-
+/* harmony import */ var _createCombatant__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./createCombatant */ "./util/createCombatant.ts");
+/* harmony import */ var _createEncounter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./createEncounter */ "./util/createEncounter.ts");
 
 
 
 
 var OVERLAY_EVENT = 'onOverlayDataUpdate';
 
+var START_TIME = _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_1___default()();
+
+function millisToMinutesAndSeconds(millis) {
+  var minutes = Math.floor(millis / 60000);
+  var seconds = Number((millis % 60000 / 1000).toFixed(0));
+  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+}
+
 function getEvent() {
   return {
-    Encounter: Object(_createEncounter__WEBPACK_IMPORTED_MODULE_4__["default"])(),
-    Combatant: Object(_createCombatant__WEBPACK_IMPORTED_MODULE_3__["createCombatants"])(8),
+    Encounter: Object(_createEncounter__WEBPACK_IMPORTED_MODULE_3__["default"])(),
+    Combatant: Object(_createCombatant__WEBPACK_IMPORTED_MODULE_2__["createCombatants"])(8),
     isActive: true
   };
 }
 
 function updateEvent(e) {
-  var duration = "04:".concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_1___default()().toString()).reverse().slice(0, 2).join(''));
+  var duration = millisToMinutesAndSeconds(_babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_1___default()() - START_TIME);
   e.detail.Encounter.duration = duration;
 
   _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0___default()(e.detail.Combatant).forEach(function (k) {
@@ -4107,7 +4113,7 @@ function updateEvent(e) {
 
 /***/ }),
 
-/***/ 0:
+/***/ 2:
 /*!******************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Ft%2Fbase&absolutePagePath=%2FUsers%2Fmatthew.elphick%2Fpersonal%2Fffxiv-overlays%2Fpages%2Ft%2Fbase.tsx ***!
   \******************************************************************************************************************************************************/
@@ -4130,5 +4136,5 @@ module.exports = dll_7aff549c98b978433226;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=base.js.map
