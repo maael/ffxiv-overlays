@@ -1,5 +1,6 @@
 import {createCombatants} from './createCombatant';
 import createEncounter from './createEncounter';
+import {randomBetween} from './random';
 
 const OVERLAY_EVENT = 'onOverlayDataUpdate';
 
@@ -20,10 +21,16 @@ function getEvent() {
 }
 
 function updateEvent(e: any) {
-  const duration = millisToMinutesAndSeconds(Date.now() - START_TIME);
+  const duration_ms = Date.now() - START_TIME;
+  const duration = millisToMinutesAndSeconds(duration_ms);
+  e.detail.Encounter.damage = 0;
   e.detail.Encounter.duration = duration;
+  e.detail.Encounter.DURATION = duration_ms;
   Object.keys(e.detail.Combatant).forEach((k) => {
     e.detail.Combatant[k].duration = duration;
+    e.detail.Combatant[k].DURATION = duration_ms;
+    e.detail.Combatant[k].damage = randomBetween(2000, 9000);
+    e.detail.Encounter.damage += e.detail.Combatant[k].damage;
   })
   return e.detail;
 }
