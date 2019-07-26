@@ -54,3 +54,7 @@ You can test themes by going to [https://maael.github.io/ffxiv-overlays/t/\<them
 
 - `simulator` - to enable a simulation of ACT
 - `debug` - to log updates from the simulator to the console
+
+## Ideas for themes
+
+- Simple scrolling graph showing damage over fight for last X ticks, with current damage underneath it
