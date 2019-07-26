@@ -39,7 +39,7 @@ export default class Base extends React.Component<State> {
             <div style={{fontSize: '0.8em'}}>{v.name} ({(v.Job || '').toUpperCase()})</div>
             <div>{v.damage}</div>
           </div>
-        )) : null}
+        )) : <div>Loading data...</div>}
       </>
     );
   }
