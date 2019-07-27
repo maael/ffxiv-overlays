@@ -1,5 +1,6 @@
 import React from 'react';
 import {Sparklines, SparklinesLine} from 'react-sparklines';
+import 'core-js/stable/array/includes';
 import DragCorner from '../../components/DragCorner';
 import simulator from '../../util/simulator';
 import jobColours from '../../util/colours'

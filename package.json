@@ -15,12 +15,14 @@
     "deploy": "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"deploy: 🚀 Deploy to gh-pages\" && git subtree push --prefix out origin gh-pages"
   },
   "dependencies": {
+    "core-js": "^3.1.4",
     "next": "^9.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-sparklines": "1.7.0"
   },
   "devDependencies": {
+    "@types/core-js": "^2.5.2",
     "@types/node": "^12.6.8",
     "@types/react": "^16.8.23",
     "@types/react-sparklines": "1.7.0",
