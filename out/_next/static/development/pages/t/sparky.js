@@ -6843,6 +6843,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_DragCorner__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/DragCorner */ "./components/DragCorner.tsx");
 /* harmony import */ var _util_simulator__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../util/simulator */ "./util/simulator.ts");
 /* harmony import */ var _util_colours__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../util/colours */ "./util/colours.ts");
+/* harmony import */ var _util_roles__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../util/roles */ "./util/roles.ts");
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../util/types */ "./util/types.ts");
 
 
 
@@ -6856,6 +6858,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _jsxFileName = "/Users/matthew.elphick/personal/ffxiv-overlays/pages/t/sparky.tsx";
+
+
 
 
 
@@ -6896,7 +6900,9 @@ function (_React$Component) {
             k = _ref2[0],
             v = _ref2[1];
 
-        encOverTime.set(k, [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])((encOverTime.get(k) || []).splice(-25)), [Number(v.encdps)]));
+        encOverTime.set(k, [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])((encOverTime.get(k) || []).splice(-25)), [Number(v.encdps)]).filter(function (i) {
+          return !isNaN(i);
+        }));
       });
 
       _this.setState(Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, data.detail, {
@@ -6911,7 +6917,9 @@ function (_React$Component) {
 
       var upperJob = (v.Job || '').toUpperCase();
       var jobColour = Object(_util_colours__WEBPACK_IMPORTED_MODULE_17__["default"])(upperJob);
+      var role = _util_roles__WEBPACK_IMPORTED_MODULE_18__["jobRoleMap"][upperJob];
       return react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement("div", {
+        className: "".concat(role, "-sparks"),
         style: {
           "float": 'left',
           padding: '0 15px',
@@ -6924,7 +6932,7 @@ function (_React$Component) {
         key: v.name,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 49
+          lineNumber: 56
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(react_sparklines__WEBPACK_IMPORTED_MODULE_14__["Sparklines"], {
@@ -6932,15 +6940,17 @@ function (_React$Component) {
         height: 50,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 50
+          lineNumber: 57
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(react_sparklines__WEBPACK_IMPORTED_MODULE_14__["SparklinesLine"], {
-        style: {},
+        style: {
+          fillOpacity: 0.5
+        },
         color: jobColour,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 51
+          lineNumber: 58
         },
         __self: this
       })), react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement("div", {
@@ -6949,13 +6959,13 @@ function (_React$Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53
+          lineNumber: 60
         },
         __self: this
       }, v.name, " (", upperJob, ")"), react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54
+          lineNumber: 61
         },
         __self: this
       }, v.encdps));
@@ -6982,6 +6992,15 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "componentWillUpdate",
+    value: function componentWillUpdate(_newProps, newState) {
+      if (this.state.isActive === 'false' && newState === 'true') {
+        this.setState({
+          encOverTime: new _babel_runtime_corejs2_core_js_map__WEBPACK_IMPORTED_MODULE_4___default.a()
+        });
+      }
+    }
+  }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       if (_util_simulator__WEBPACK_IMPORTED_MODULE_16__["default"]) clearInterval(this.simulator);
@@ -6996,7 +7015,7 @@ function (_React$Component) {
             k = _ref6[0],
             v = _ref6[1];
 
-        return filters.includes(k);
+        return filters.indexOf(k) > -1;
       }).sort(function (_ref7, _ref8) {
         var _ref9 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref7, 2),
             _k1 = _ref9[0],
@@ -7009,12 +7028,13 @@ function (_React$Component) {
         return Number(v2.encdps) - Number(v1.encdps);
       }).map(this.renderCombatant) : null;
       return react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_13___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(styled_jsx_style__WEBPACK_IMPORTED_MODULE_12___default.a, {
-        id: "604295086",
+        id: "4017636557",
+        dynamic: [_util_types__WEBPACK_IMPORTED_MODULE_19__["RoleColoursLight"].HEALER, _util_types__WEBPACK_IMPORTED_MODULE_19__["RoleColoursLight"].TANK, _util_types__WEBPACK_IMPORTED_MODULE_19__["RoleColoursLight"].DPS],
         __self: this
-      }, "body{font-family:sans-serif;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXR0aGV3LmVscGhpY2svcGVyc29uYWwvZmZ4aXYtb3ZlcmxheXMvcGFnZXMvdC9zcGFya3kudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQW9FMkIsQUFHb0MsdUJBQ3pCIiwiZmlsZSI6Ii9Vc2Vycy9tYXR0aGV3LmVscGhpY2svcGVyc29uYWwvZmZ4aXYtb3ZlcmxheXMvcGFnZXMvdC9zcGFya3kudHN4Iiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7U3BhcmtsaW5lcywgU3BhcmtsaW5lc0xpbmV9IGZyb20gJ3JlYWN0LXNwYXJrbGluZXMnO1xuaW1wb3J0IERyYWdDb3JuZXIgZnJvbSAnLi4vLi4vY29tcG9uZW50cy9EcmFnQ29ybmVyJztcbmltcG9ydCBzaW11bGF0b3IgZnJvbSAnLi4vLi4vdXRpbC9zaW11bGF0b3InO1xuaW1wb3J0IGpvYkNvbG91cnMgZnJvbSAnLi4vLi4vdXRpbC9jb2xvdXJzJ1xuaW1wb3J0IHtDb21iYXRhbnRPcHRpb25zLCBFbmNvdW50ZXJPcHRpb25zfSBmcm9tICcuLi8uLi91dGlsL3R5cGVzJztcblxudHlwZSBFbmNPdmVyVHlwZSA9IE1hcDxzdHJpbmcsIG51bWJlcltdPjtcblxuaW50ZXJmYWNlIFN0YXRlIHtcbiAgQ29tYmF0YW50PzogUmVjb3JkPHN0cmluZywgUGFydGlhbDxSZWNvcmQ8Q29tYmF0YW50T3B0aW9ucywgc3RyaW5nPj4+O1xuICBFbmNvdW50ZXI/OiBQYXJ0aWFsPFJlY29yZDxFbmNvdW50ZXJPcHRpb25zLCBzdHJpbmc+PjtcbiAgaXNBY3RpdmU/OiBib29sZWFuO1xuICBlbmNPdmVyVGltZTogRW5jT3ZlclR5cGU7XG59XG5cbmV4cG9ydCBkZWZhdWx0IGNsYXNzIFNwYXJreSBleHRlbmRzIFJlYWN0LkNvbXBvbmVudDxTdGF0ZT4ge1xuICBzdGF0ZTogU3RhdGUgPSB7XG4gICAgZW5jT3ZlclRpbWU6IG5ldyBNYXAoKVxuICB9O1xuICBzaW11bGF0b3I/OiBOb2RlSlMuVGltZW91dDtcbiAgY29tcG9uZW50RGlkTW91bnQgKCkge1xuICAgIGlmICh0eXBlb2Ygd2luZG93ID09PSAndW5kZWZpbmVkJykgcmV0dXJuO1xuICAgIGRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ29uT3ZlcmxheURhdGFVcGRhdGUnLCB0aGlzLm9uT3ZlcmxheURhdGFVcGRhdGUpO1xuICAgIHdpbmRvdy5hZGRFdmVudExpc3RlbmVyKCdtZXNzYWdlJywgKGUpID0+IHtcbiAgICAgIGlmIChlLmRhdGEudHlwZSA9PT0gJ29uT3ZlcmxheURhdGFVcGRhdGUnKSB7XG4gICAgICAgIHRoaXMub25PdmVybGF5RGF0YVVwZGF0ZShlLmRhdGEpO1xuICAgICAgfVxuICAgIH0pO1xuICAgIGlmICh3aW5kb3cubG9jYXRpb24uc2VhcmNoLmluY2x1ZGVzKCdzaW11bGF0b3InKSkge1xuICAgICAgdGhpcy5zaW11bGF0b3IgPSBzaW11bGF0b3IoMTAwMCk7XG4gICAgfVxuICB9XG4gIGNvbXBvbmVudFdpbGxVbm1vdW50ICgpIHtcbiAgICBpZiAoc2ltdWxhdG9yKSBjbGVhckludGVydmFsKHRoaXMuc2ltdWxhdG9yKTtcbiAgfVxuICBvbk92ZXJsYXlEYXRhVXBkYXRlID0gKGRhdGE6IGFueSkgPT4ge1xuICAgIGNvbnN0IENvbWJhdGFudDogUmVjb3JkPHN0cmluZywgUGFydGlhbDxSZWNvcmQ8Q29tYmF0YW50T3B0aW9ucywgc3RyaW5nPj4+ID0gZGF0YS5kZXRhaWwuQ29tYmF0YW50O1xuICAgIGNvbnN0IHtlbmNPdmVyVGltZX0gPSB0aGlzLnN0YXRlO1xuICAgIE9iamVjdC5lbnRyaWVzKENvbWJhdGFudCkuZm9yRWFjaCgoW2ssIHZdKSA9PiB7XG4gICAgICBlbmNPdmVyVGltZS5zZXQoaywgWy4uLihlbmNPdmVyVGltZS5nZXQoaykgfHwgW10pLnNwbGljZSgtMjUpLCBOdW1iZXIodi5lbmNkcHMpXSlcbiAgICB9KTtcbiAgICB0aGlzLnNldFN0YXRlKHsuLi5kYXRhLmRldGFpbCwgZW5jT3ZlclRpbWV9KTtcbiAgfVxuICByZW5kZXJDb21iYXRhbnQgPSAoW2ssIHZdKSA9PiB7XG4gICAgY29uc3QgdXBwZXJKb2IgPSAodi5Kb2IgfHwgJycpLnRvVXBwZXJDYXNlKCk7XG4gICAgY29uc3Qgam9iQ29sb3VyID0gam9iQ29sb3Vycyh1cHBlckpvYik7XG4gICAgcmV0dXJuIChcbiAgICAgIDxkaXYgc3R5bGU9e3tmbG9hdDogJ2xlZnQnLCBwYWRkaW5nOiAnMCAxNXB4JywgdGV4dEFsaWduOiAnY2VudGVyJywgd2lkdGg6IDIwMCwgY29sb3I6ICcjRkZGRkZGJywgZm9udFdlaWdodDogJ2JvbGQnLCB0ZXh0U2hhZG93OiBgMCAwIDVweCAke2pvYkNvbG91cn1gfX0ga2V5PXt2Lm5hbWV9PlxuICAgICAgICA8U3BhcmtsaW5lcyBkYXRhPXt0aGlzLnN0YXRlLmVuY092ZXJUaW1lLmdldChrKX0gaGVpZ2h0PXs1MH0+XG4gICAgICAgICAgPFNwYXJrbGluZXNMaW5lIHN0eWxlPXt7fX0gY29sb3I9e2pvYkNvbG91cn0gLz5cbiAgICAgICAgPC9TcGFya2xpbmVzPlxuICAgICAgICA8ZGl2IHN0eWxlPXt7Zm9udFNpemU6ICcwLjhlbSd9fT57di5uYW1lfSAoe3VwcGVySm9ifSk8L2Rpdj5cbiAgICAgICAgPGRpdj57di5lbmNkcHN9PC9kaXY+XG4gICAgICA8L2Rpdj5cbiAgICApXG4gIH1cbiAgcmVuZGVyICgpIHtcbiAgICBjb25zdCB7Q29tYmF0YW50fSA9IHRoaXMuc3RhdGU7XG4gICAgY29uc3QgZmlsdGVycyA9IFsnWU9VIDAnLCAnWU9VJ11cbiAgICBjb25zdCBDb21iYXRhbnRzID0gQ29tYmF0YW50XG4gICAgICA/IE9iamVjdC5lbnRyaWVzKENvbWJhdGFudClcbiAgICAgICAgICAuZmlsdGVyKChbaywgdl0pID0+IGZpbHRlcnMuaW5jbHVkZXMoaykpXG4gICAgICAgICAgLnNvcnQoKFtfazEsIHYxXSwgW19rMiwgdjJdKSA9PiBOdW1iZXIodjIuZW5jZHBzKSAtIE51bWJlcih2MS5lbmNkcHMpKVxuICAgICAgICAgIC5tYXAodGhpcy5yZW5kZXJDb21iYXRhbnQpXG4gICAgICA6IG51bGw7XG4gICAgcmV0dXJuIChcbiAgICAgIDw+XG4gICAgICAgIDxzdHlsZSBnbG9iYWwganN4PntgXG4gICAgICAgICAgYm9keSB7XG4gICAgICAgICAgICBmb250LWZhbWlseTogc2Fucy1zZXJpZjtcbiAgICAgICAgICB9XG4gICAgICAgIGB9PC9zdHlsZT5cbiAgICAgICAgPERyYWdDb3JuZXIgLz5cbiAgICAgICAge0NvbWJhdGFudHN9XG4gICAgICA8Lz5cbiAgICApO1xuICB9XG59XG5cbiJdfQ== */\n/*@ sourceURL=/Users/matthew.elphick/personal/ffxiv-overlays/pages/t/sparky.tsx */"), react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(_components_DragCorner__WEBPACK_IMPORTED_MODULE_15__["default"], {
+      }, "body{font-family:sans-serif;}svg polyline:first-of-type{fill-opacity:0.5 !important;}svg circle{fill:none !important;}.HEALER-sparks svg polyline:first-of-type{fill:".concat(_util_types__WEBPACK_IMPORTED_MODULE_19__["RoleColoursLight"].HEALER, " !important;}.TANK-sparks svg polyline:first-of-type{fill:").concat(_util_types__WEBPACK_IMPORTED_MODULE_19__["RoleColoursLight"].TANK, " !important;}.DPS-sparks svg polyline:first-of-type{fill:").concat(_util_types__WEBPACK_IMPORTED_MODULE_19__["RoleColoursLight"].DPS, " !important;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXR0aGV3LmVscGhpY2svcGVyc29uYWwvZmZ4aXYtb3ZlcmxheXMvcGFnZXMvdC9zcGFya3kudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQTJFMkIsQUFHb0MsQUFHSyxBQUdQLEFBR3dCLEFBR0EsQUFHQSxxQkFSL0MsRUFOQSxLQUdBLGlCQU1BLEFBR0EsQUFHQSIsImZpbGUiOiIvVXNlcnMvbWF0dGhldy5lbHBoaWNrL3BlcnNvbmFsL2ZmeGl2LW92ZXJsYXlzL3BhZ2VzL3Qvc3Bhcmt5LnRzeCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQge1NwYXJrbGluZXMsIFNwYXJrbGluZXNMaW5lfSBmcm9tICdyZWFjdC1zcGFya2xpbmVzJztcbmltcG9ydCBEcmFnQ29ybmVyIGZyb20gJy4uLy4uL2NvbXBvbmVudHMvRHJhZ0Nvcm5lcic7XG5pbXBvcnQgc2ltdWxhdG9yIGZyb20gJy4uLy4uL3V0aWwvc2ltdWxhdG9yJztcbmltcG9ydCBqb2JDb2xvdXJzIGZyb20gJy4uLy4uL3V0aWwvY29sb3VycydcbmltcG9ydCB7am9iUm9sZU1hcH0gZnJvbSAnLi4vLi4vdXRpbC9yb2xlcyc7XG5pbXBvcnQge0NvbWJhdGFudE9wdGlvbnMsIEVuY291bnRlck9wdGlvbnMsIFJvbGVDb2xvdXJzTGlnaHR9IGZyb20gJy4uLy4uL3V0aWwvdHlwZXMnO1xuXG50eXBlIEVuY092ZXJUeXBlID0gTWFwPHN0cmluZywgbnVtYmVyW10+O1xuXG5pbnRlcmZhY2UgU3RhdGUge1xuICBDb21iYXRhbnQ/OiBSZWNvcmQ8c3RyaW5nLCBQYXJ0aWFsPFJlY29yZDxDb21iYXRhbnRPcHRpb25zLCBzdHJpbmc+Pj47XG4gIEVuY291bnRlcj86IFBhcnRpYWw8UmVjb3JkPEVuY291bnRlck9wdGlvbnMsIHN0cmluZz4+O1xuICBpc0FjdGl2ZT86ICd0cnVlJyB8ICdmYWxzZSc7XG4gIGVuY092ZXJUaW1lOiBFbmNPdmVyVHlwZTtcbn1cblxuZXhwb3J0IGRlZmF1bHQgY2xhc3MgU3Bhcmt5IGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50PFN0YXRlPiB7XG4gIHN0YXRlOiBTdGF0ZSA9IHtcbiAgICBlbmNPdmVyVGltZTogbmV3IE1hcCgpXG4gIH07XG4gIHNpbXVsYXRvcj86IE5vZGVKUy5UaW1lb3V0O1xuICBjb21wb25lbnREaWRNb3VudCAoKSB7XG4gICAgaWYgKHR5cGVvZiB3aW5kb3cgPT09ICd1bmRlZmluZWQnKSByZXR1cm47XG4gICAgZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignb25PdmVybGF5RGF0YVVwZGF0ZScsIHRoaXMub25PdmVybGF5RGF0YVVwZGF0ZSk7XG4gICAgd2luZG93LmFkZEV2ZW50TGlzdGVuZXIoJ21lc3NhZ2UnLCAoZSkgPT4ge1xuICAgICAgaWYgKGUuZGF0YS50eXBlID09PSAnb25PdmVybGF5RGF0YVVwZGF0ZScpIHtcbiAgICAgICAgdGhpcy5vbk92ZXJsYXlEYXRhVXBkYXRlKGUuZGF0YSk7XG4gICAgICB9XG4gICAgfSk7XG4gICAgaWYgKHdpbmRvdy5sb2NhdGlvbi5zZWFyY2guaW5jbHVkZXMoJ3NpbXVsYXRvcicpKSB7XG4gICAgICB0aGlzLnNpbXVsYXRvciA9IHNpbXVsYXRvcigxMDAwKTtcbiAgICB9XG4gIH1cbiAgY29tcG9uZW50V2lsbFVwZGF0ZShfbmV3UHJvcHMsIG5ld1N0YXRlKSB7XG4gICAgaWYgKHRoaXMuc3RhdGUuaXNBY3RpdmUgPT09ICdmYWxzZScgJiYgbmV3U3RhdGUgPT09ICd0cnVlJykge1xuICAgICAgdGhpcy5zZXRTdGF0ZSh7ZW5jT3ZlclRpbWU6IG5ldyBNYXAoKX0pXG4gICAgfVxuICB9XG4gIGNvbXBvbmVudFdpbGxVbm1vdW50ICgpIHtcbiAgICBpZiAoc2ltdWxhdG9yKSBjbGVhckludGVydmFsKHRoaXMuc2ltdWxhdG9yKTtcbiAgfVxuICBvbk92ZXJsYXlEYXRhVXBkYXRlID0gKGRhdGE6IGFueSkgPT4ge1xuICAgIGNvbnN0IENvbWJhdGFudDogUmVjb3JkPHN0cmluZywgUGFydGlhbDxSZWNvcmQ8Q29tYmF0YW50T3B0aW9ucywgc3RyaW5nPj4+ID0gZGF0YS5kZXRhaWwuQ29tYmF0YW50O1xuICAgIGNvbnN0IHtlbmNPdmVyVGltZX0gPSB0aGlzLnN0YXRlO1xuICAgIE9iamVjdC5lbnRyaWVzKENvbWJhdGFudCkuZm9yRWFjaCgoW2ssIHZdKSA9PiB7XG4gICAgICBlbmNPdmVyVGltZS5zZXQoaywgWy4uLihlbmNPdmVyVGltZS5nZXQoaykgfHwgW10pLnNwbGljZSgtMjUpLCBOdW1iZXIodi5lbmNkcHMpXS5maWx0ZXIoKGkpID0+ICFpc05hTihpKSkpXG4gICAgfSk7XG4gICAgdGhpcy5zZXRTdGF0ZSh7Li4uZGF0YS5kZXRhaWwsIGVuY092ZXJUaW1lfSk7XG4gIH1cbiAgcmVuZGVyQ29tYmF0YW50ID0gKFtrLCB2XSkgPT4ge1xuICAgIGNvbnN0IHVwcGVySm9iID0gKHYuSm9iIHx8ICcnKS50b1VwcGVyQ2FzZSgpO1xuICAgIGNvbnN0IGpvYkNvbG91ciA9IGpvYkNvbG91cnModXBwZXJKb2IpO1xuICAgIGNvbnN0IHJvbGUgPSBqb2JSb2xlTWFwW3VwcGVySm9iXTtcbiAgICByZXR1cm4gKFxuICAgICAgPGRpdiBjbGFzc05hbWU9e2Ake3JvbGV9LXNwYXJrc2B9IHN0eWxlPXt7ZmxvYXQ6ICdsZWZ0JywgcGFkZGluZzogJzAgMTVweCcsIHRleHRBbGlnbjogJ2NlbnRlcicsIHdpZHRoOiAyMDAsIGNvbG9yOiAnI0ZGRkZGRicsIGZvbnRXZWlnaHQ6ICdib2xkJywgdGV4dFNoYWRvdzogYDAgMCA1cHggJHtqb2JDb2xvdXJ9YH19IGtleT17di5uYW1lfT5cbiAgICAgICAgPFNwYXJrbGluZXMgZGF0YT17dGhpcy5zdGF0ZS5lbmNPdmVyVGltZS5nZXQoayl9IGhlaWdodD17NTB9PlxuICAgICAgICAgIDxTcGFya2xpbmVzTGluZSBzdHlsZT17e2ZpbGxPcGFjaXR5OiAwLjV9fSBjb2xvcj17am9iQ29sb3VyfSAvPlxuICAgICAgICA8L1NwYXJrbGluZXM+XG4gICAgICAgIDxkaXYgc3R5bGU9e3tmb250U2l6ZTogJzAuOGVtJ319Pnt2Lm5hbWV9ICh7dXBwZXJKb2J9KTwvZGl2PlxuICAgICAgICA8ZGl2Pnt2LmVuY2Rwc308L2Rpdj5cbiAgICAgIDwvZGl2PlxuICAgIClcbiAgfVxuICByZW5kZXIgKCkge1xuICAgIGNvbnN0IHtDb21iYXRhbnR9ID0gdGhpcy5zdGF0ZTtcbiAgICBjb25zdCBmaWx0ZXJzID0gWydZT1UgMCcsICdZT1UnXVxuICAgIGNvbnN0IENvbWJhdGFudHMgPSBDb21iYXRhbnRcbiAgICAgID8gT2JqZWN0LmVudHJpZXMoQ29tYmF0YW50KVxuICAgICAgICAgIC5maWx0ZXIoKFtrLCB2XSkgPT4gZmlsdGVycy5pbmRleE9mKGspID4gLTEpXG4gICAgICAgICAgLnNvcnQoKFtfazEsIHYxXSwgW19rMiwgdjJdKSA9PiBOdW1iZXIodjIuZW5jZHBzKSAtIE51bWJlcih2MS5lbmNkcHMpKVxuICAgICAgICAgIC5tYXAodGhpcy5yZW5kZXJDb21iYXRhbnQpXG4gICAgICA6IG51bGw7XG4gICAgcmV0dXJuIChcbiAgICAgIDw+XG4gICAgICAgIDxzdHlsZSBnbG9iYWwganN4PntgXG4gICAgICAgICAgYm9keSB7XG4gICAgICAgICAgICBmb250LWZhbWlseTogc2Fucy1zZXJpZjtcbiAgICAgICAgICB9XG4gICAgICAgICAgc3ZnIHBvbHlsaW5lOmZpcnN0LW9mLXR5cGUge1xuICAgICAgICAgICAgZmlsbC1vcGFjaXR5OiAwLjUgIWltcG9ydGFudDtcbiAgICAgICAgICB9XG4gICAgICAgICAgc3ZnIGNpcmNsZSB7XG4gICAgICAgICAgICBmaWxsOiBub25lICFpbXBvcnRhbnQ7XG4gICAgICAgICAgfVxuICAgICAgICAgIC5IRUFMRVItc3BhcmtzIHN2ZyBwb2x5bGluZTpmaXJzdC1vZi10eXBlIHtcbiAgICAgICAgICAgIGZpbGw6ICR7Um9sZUNvbG91cnNMaWdodC5IRUFMRVJ9ICFpbXBvcnRhbnQ7XG4gICAgICAgICAgfVxuICAgICAgICAgIC5UQU5LLXNwYXJrcyBzdmcgcG9seWxpbmU6Zmlyc3Qtb2YtdHlwZSB7XG4gICAgICAgICAgICBmaWxsOiAke1JvbGVDb2xvdXJzTGlnaHQuVEFOS30gIWltcG9ydGFudDtcbiAgICAgICAgICB9XG4gICAgICAgICAgLkRQUy1zcGFya3Mgc3ZnIHBvbHlsaW5lOmZpcnN0LW9mLXR5cGUge1xuICAgICAgICAgICAgZmlsbDogJHtSb2xlQ29sb3Vyc0xpZ2h0LkRQU30gIWltcG9ydGFudDtcbiAgICAgICAgICB9XG4gICAgICAgIGB9PC9zdHlsZT5cbiAgICAgICAgPERyYWdDb3JuZXIgLz5cbiAgICAgICAge0NvbWJhdGFudHN9XG4gICAgICA8Lz5cbiAgICApO1xuICB9XG59XG4iXX0= */\n/*@ sourceURL=/Users/matthew.elphick/personal/ffxiv-overlays/pages/t/sparky.tsx */")), react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(_components_DragCorner__WEBPACK_IMPORTED_MODULE_15__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 74
+          lineNumber: 96
         },
         __self: this
       }), Combatants);
@@ -7042,9 +7062,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./types */ "./util/types.ts");
 
 
-function jobColours(job) {
+function jobColours(job, modifier) {
   var role = _roles__WEBPACK_IMPORTED_MODULE_0__["jobRoleMap"][job];
-  return _types__WEBPACK_IMPORTED_MODULE_1__["RoleColours"][role] || _types__WEBPACK_IMPORTED_MODULE_1__["RoleColours"]["default"];
+  if (modifier === 'light') return _types__WEBPACK_IMPORTED_MODULE_1__["RoleColoursLight"][role] || _types__WEBPACK_IMPORTED_MODULE_1__["RoleColoursLight"]["default"];else if (modifier === 'dark') return _types__WEBPACK_IMPORTED_MODULE_1__["RoleColoursDark"][role] || _types__WEBPACK_IMPORTED_MODULE_1__["RoleColoursDark"]["default"];else return _types__WEBPACK_IMPORTED_MODULE_1__["RoleColours"][role] || _types__WEBPACK_IMPORTED_MODULE_1__["RoleColours"]["default"];
 }
 ;
 
@@ -7332,7 +7352,7 @@ function updateEvent(e) {
 /*!***********************!*\
   !*** ./util/types.ts ***!
   \***********************/
-/*! exports provided: EncounterOptions, CombatantOptions, JobAbbreviations, Roles, RoleColours */
+/*! exports provided: EncounterOptions, CombatantOptions, JobAbbreviations, Roles, RoleColours, RoleColoursLight, RoleColoursDark */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7342,6 +7362,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JobAbbreviations", function() { return JobAbbreviations; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Roles", function() { return Roles; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleColours", function() { return RoleColours; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleColoursLight", function() { return RoleColoursLight; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleColoursDark", function() { return RoleColoursDark; });
 /**
  * EncounterOptions + CombatantOptions taken from here:
  * https://github.com/billyvg/OverlayPlugin-themes/blob/master/app/coreUtils.js
@@ -7505,9 +7527,27 @@ var RoleColours;
   RoleColours["default"] = "grey";
 })(RoleColours || (RoleColours = {}));
 
+var RoleColoursLight;
+
+(function (RoleColoursLight) {
+  RoleColoursLight["HEALER"] = "lightgreen";
+  RoleColoursLight["TANK"] = "lightblue";
+  RoleColoursLight["DPS"] = "palevioletred";
+  RoleColoursLight["default"] = "lightgrey";
+})(RoleColoursLight || (RoleColoursLight = {}));
+
+var RoleColoursDark;
+
+(function (RoleColoursDark) {
+  RoleColoursDark["HEALER"] = "darkgreen";
+  RoleColoursDark["TANK"] = "darkblue";
+  RoleColoursDark["DPS"] = "darkred";
+  RoleColoursDark["default"] = "darkgrey";
+})(RoleColoursDark || (RoleColoursDark = {}));
+
 /***/ }),
 
-/***/ 0:
+/***/ 1:
 /*!**********************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Ft%2Fsparky&absolutePagePath=%2FUsers%2Fmatthew.elphick%2Fpersonal%2Fffxiv-overlays%2Fpages%2Ft%2Fsparky.tsx ***!
   \**********************************************************************************************************************************************************/
@@ -7530,5 +7570,5 @@ module.exports = dll_7aff549c98b978433226;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=sparky.js.map
