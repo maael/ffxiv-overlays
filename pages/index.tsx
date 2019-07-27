@@ -29,6 +29,7 @@ export default () => (
     <ul>
       <li><Link href='/t/base'>Base</Link></li>
       <li><Link href='/t/minidps'>Mini DPS</Link></li>
+      <li><Link href='/t/sparky'>Sparky</Link></li>
     </ul>
     <h2>Others Overlay Themes</h2>
     <ul>

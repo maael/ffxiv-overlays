@@ -30,7 +30,11 @@ function updateEvent(e: any) {
     e.detail.Combatant[k].duration = duration;
     e.detail.Combatant[k].DURATION = duration_ms;
     e.detail.Combatant[k].damage = randomBetween(2000, 9000);
+    e.detail.Combatant[k].DPS = randomBetween(2000, 9000);
+    e.detail.Combatant[k].encdps = randomBetween(2000, 9000);
     e.detail.Encounter.damage += e.detail.Combatant[k].damage;
+    e.detail.Encounter.dps += e.detail.Combatant[k].dps;
+    e.detail.Encounter.encdps += e.detail.Combatant[k].encdps;
   })
   return e.detail;
 }
@@ -39,7 +43,7 @@ export default (ms: number = 3000) => {
   const baseEvent = new CustomEvent(OVERLAY_EVENT, {detail: getEvent()})
   document.dispatchEvent(baseEvent);
   if (window.location.search.includes('debug')) console.info('displatch:start', baseEvent.detail);
-  setInterval(() => {
+  return setInterval(() => {
     const e = new CustomEvent(OVERLAY_EVENT, {detail: updateEvent(baseEvent)})
     document.dispatchEvent(e);
     if (window.location.search.includes('debug')) console.info('dispatch:update', e.detail);

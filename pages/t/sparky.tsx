@@ -1,17 +1,23 @@
 import React from 'react';
+import {Sparklines, SparklinesLine} from 'react-sparklines';
 import DragCorner from '../../components/DragCorner';
 import simulator from '../../util/simulator';
 import jobColours from '../../util/colours'
 import {CombatantOptions, EncounterOptions} from '../../util/types';
 
+type EncOverType = Map<string, number[]>;
+
 interface State {
   Combatant?: Record<string, Partial<Record<CombatantOptions, string>>>;
   Encounter?: Partial<Record<EncounterOptions, string>>;
   isActive?: boolean;
+  encOverTime: EncOverType;
 }
 
-export default class Minidps extends React.Component<State> {
-  state: State = {};
+export default class Sparky extends React.Component<State> {
+  state: State = {
+    encOverTime: new Map()
+  };
   simulator?: NodeJS.Timeout;
   componentDidMount () {
     if (typeof window === 'undefined') return;
@@ -29,20 +35,35 @@ export default class Minidps extends React.Component<State> {
     if (simulator) clearInterval(this.simulator);
   }
   onOverlayDataUpdate = (data: any) => {
-    this.setState(data.detail);
+    const Combatant: Record<string, Partial<Record<CombatantOptions, string>>> = data.detail.Combatant;
+    const {encOverTime} = this.state;
+    Object.entries(Combatant).forEach(([k, v]) => {
+      encOverTime.set(k, [...(encOverTime.get(k) || []).splice(-25), Number(v.encdps)])
+    });
+    this.setState({...data.detail, encOverTime});
   }
   renderCombatant = ([k, v]) => {
     const upperJob = (v.Job || '').toUpperCase();
     const jobColour = jobColours(upperJob);
     return (
-      <div style={{float: 'left', padding: '0 15px', textAlign: 'center', color: '#FFFFFF', fontWeight: 'bold', textShadow: `0 0 5px ${jobColour}`}} key={v.name}>
-        <div style={{fontSize: '0.8em'}}>{v.name} ({(v.Job || '').toUpperCase()})</div>
+      <div style={{float: 'left', padding: '0 15px', textAlign: 'center', width: 200, color: '#FFFFFF', fontWeight: 'bold', textShadow: `0 0 5px ${jobColour}`}} key={v.name}>
+        <Sparklines data={this.state.encOverTime.get(k)} height={50}>
+          <SparklinesLine style={{}} color={jobColour} />
+        </Sparklines>
+        <div style={{fontSize: '0.8em'}}>{v.name} ({upperJob})</div>
         <div>{v.encdps}</div>
       </div>
-    );
+    )
   }
   render () {
     const {Combatant} = this.state;
+    const filters = ['YOU 0', 'YOU']
+    const Combatants = Combatant
+      ? Object.entries(Combatant)
+          .filter(([k, v]) => filters.includes(k))
+          .sort(([_k1, v1], [_k2, v2]) => Number(v2.encdps) - Number(v1.encdps))
+          .map(this.renderCombatant)
+      : null;
     return (
       <>
         <style global jsx>{`
@@ -51,7 +72,7 @@ export default class Minidps extends React.Component<State> {
           }
         `}</style>
         <DragCorner />
-        {Combatant ? Object.entries(Combatant).sort(([_k1, v1], [_k2, v2]) => Number(v2.encdps) - Number(v1.encdps)).map(this.renderCombatant) : null}
+        {Combatants}
       </>
     );
   }

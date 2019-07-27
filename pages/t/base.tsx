@@ -10,6 +10,7 @@ interface State {
 
 export default class Base extends React.Component<State> {
   state: State = {};
+  simulator?: NodeJS.Timeout;
   componentDidMount () {
     if (typeof window === 'undefined') return;
     document.addEventListener('onOverlayDataUpdate', this.onOverlayDataUpdate);
@@ -19,8 +20,11 @@ export default class Base extends React.Component<State> {
       }
     });
     if (window.location.search.includes('simulator')) {
-      simulator();
+      this.simulator = simulator(1000);
     }
+  }
+  componentWillUnmount () {
+    if (simulator) clearInterval(this.simulator);
   }
   onOverlayDataUpdate = (data: any) => {
     console.info('receive', data.detail);

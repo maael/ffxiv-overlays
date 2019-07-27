@@ -211,3 +211,39 @@ export enum CombatantOptions {
   NAME_TRUNC15 = "NAME15",
   CUSTOM_ACTUAL_HEALING = "custom_actual_healing",
 }
+
+export enum JobAbbreviations {
+  'PLD' = 'PLD',
+  'WAR' = 'WAR',
+  'DRK' = 'DRK',
+  'GNB' = 'GNB',
+  'SCH' = 'SCH',
+  'AST' = 'AST',
+  'WHM' = 'WHM',
+  'SMN' = 'SMN',
+  'BRD' = 'BRD',
+  'DRG' = 'DRG',
+  'MNK' = 'MNK',
+  'NIN' = 'NIN',
+  'BLM' = 'BLM',
+  'MCH' = 'MCH',
+  'SAM' = 'SAM',
+  'RDM' = 'RDM',
+  'DNC' = 'DNC',
+}
+
+export enum Roles {
+  'HEALER' = 'HEALER',
+  'TANK' = 'TANK',
+  'RANGED PHYSICAL DPS' = 'RANGED PHYSICAL DPS',
+  'MELEE PHYSICAL DPS' = 'MELEE PHYSICAL DPS',
+  'RANGED MAGIC DPS' = 'RANGED MAGIC DPS',
+  'DPS' = 'DPS',
+}
+
+export enum RoleColours {
+  'HEALER' = 'green',
+  'TANK' = 'blue',
+  'DPS' = 'red',
+  'default' = 'grey'
+}
