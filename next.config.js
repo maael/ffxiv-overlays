@@ -6,6 +6,7 @@ module.exports = {
       '/': { page: '/' },
       '/t/base': { page: '/t/base' },
       '/t/minidps': { page: '/t/minidps' },
+      '/t/sparky': { page: '/t/sparky' },
     }
   },
   assetPrefix: !debug ? '/ffxiv-overlays' : ''
