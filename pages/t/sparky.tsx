@@ -10,7 +10,7 @@ type EncOverType = Map<string, number[]>;
 interface State {
   Combatant?: Record<string, Partial<Record<CombatantOptions, string>>>;
   Encounter?: Partial<Record<EncounterOptions, string>>;
-  isActive?: boolean;
+  isActive?: 'true' | 'false';
   encOverTime: EncOverType;
 }
 
@@ -32,7 +32,9 @@ export default class Sparky extends React.Component<State> {
     }
   }
   componentWillUpdate(_newProps, newState) {
-    console.info('state', newState, this.state);
+    if (this.state.isActive === 'false' && newState === 'true') {
+      this.setState({encOverTime: new Map()})
+    }
   }
   componentWillUnmount () {
     if (simulator) clearInterval(this.simulator);
@@ -51,7 +53,7 @@ export default class Sparky extends React.Component<State> {
     return (
       <div style={{float: 'left', padding: '0 15px', textAlign: 'center', width: 200, color: '#FFFFFF', fontWeight: 'bold', textShadow: `0 0 5px ${jobColour}`}} key={v.name}>
         <Sparklines data={this.state.encOverTime.get(k)} height={50}>
-          <SparklinesLine style={{}} color={jobColour} />
+          <SparklinesLine style={{fillOpacity: 0.5}} color={jobColour} />
         </Sparklines>
         <div style={{fontSize: '0.8em'}}>{v.name} ({upperJob})</div>
         <div>{v.encdps}</div>
