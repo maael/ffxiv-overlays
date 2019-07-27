@@ -3,7 +3,8 @@ import {Sparklines, SparklinesLine} from 'react-sparklines';
 import DragCorner from '../../components/DragCorner';
 import simulator from '../../util/simulator';
 import jobColours from '../../util/colours'
-import {CombatantOptions, EncounterOptions} from '../../util/types';
+import {jobRoleMap} from '../../util/roles';
+import {CombatantOptions, EncounterOptions, RoleColoursLight} from '../../util/types';
 
 type EncOverType = Map<string, number[]>;
 
@@ -50,8 +51,9 @@ export default class Sparky extends React.Component<State> {
   renderCombatant = ([k, v]) => {
     const upperJob = (v.Job || '').toUpperCase();
     const jobColour = jobColours(upperJob);
+    const role = jobRoleMap[upperJob];
     return (
-      <div style={{float: 'left', padding: '0 15px', textAlign: 'center', width: 200, color: '#FFFFFF', fontWeight: 'bold', textShadow: `0 0 5px ${jobColour}`}} key={v.name}>
+      <div className={`${role}-sparks`} style={{float: 'left', padding: '0 15px', textAlign: 'center', width: 200, color: '#FFFFFF', fontWeight: 'bold', textShadow: `0 0 5px ${jobColour}`}} key={v.name}>
         <Sparklines data={this.state.encOverTime.get(k)} height={50}>
           <SparklinesLine style={{fillOpacity: 0.5}} color={jobColour} />
         </Sparklines>
@@ -74,6 +76,21 @@ export default class Sparky extends React.Component<State> {
         <style global jsx>{`
           body {
             font-family: sans-serif;
+          }
+          svg polyline:first-of-type {
+            fill-opacity: 0.5 !important;
+          }
+          svg circle {
+            fill: none !important;
+          }
+          .HEALER-sparks svg polyline:first-of-type {
+            fill: ${RoleColoursLight.HEALER} !important;
+          }
+          .TANK-sparks svg polyline:first-of-type {
+            fill: ${RoleColoursLight.TANK} !important;
+          }
+          .DPS-sparks svg polyline:first-of-type {
+            fill: ${RoleColoursLight.DPS} !important;
           }
         `}</style>
         <DragCorner />

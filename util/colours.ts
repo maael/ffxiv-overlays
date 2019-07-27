@@ -1,7 +1,9 @@
 import {jobRoleMap} from './roles';
-import {Roles, JobAbbreviations, RoleColours} from './types';
+import {JobAbbreviations, RoleColours, RoleColoursLight, RoleColoursDark} from './types';
 
-export default function jobColours (job: JobAbbreviations): RoleColours {
+export default function jobColours (job: JobAbbreviations, modifier?: 'light' | 'dark'): RoleColours {
   const role = jobRoleMap[job];
-  return RoleColours[role] || RoleColours.default;
+  if (modifier === 'light') return RoleColoursLight[role] || RoleColoursLight.default;
+  else if (modifier === 'dark') return RoleColoursDark[role] || RoleColoursDark.default;
+  else return RoleColours[role] || RoleColours.default;
 };

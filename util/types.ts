@@ -247,3 +247,17 @@ export enum RoleColours {
   'DPS' = 'red',
   'default' = 'grey'
 }
+
+export enum RoleColoursLight {
+  'HEALER' = 'lightgreen',
+  'TANK' = 'lightblue',
+  'DPS' = 'palevioletred',
+  'default' = 'lightgrey'
+}
+
+export enum RoleColoursDark {
+  'HEALER' = 'darkgreen',
+  'TANK' = 'darkblue',
+  'DPS' = 'darkred',
+  'default' = 'darkgrey'
+}
