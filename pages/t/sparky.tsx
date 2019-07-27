@@ -1,6 +1,5 @@
 import React from 'react';
 import {Sparklines, SparklinesLine} from 'react-sparklines';
-import 'core-js/stable/array/includes';
 import DragCorner from '../../components/DragCorner';
 import simulator from '../../util/simulator';
 import jobColours from '../../util/colours'
@@ -61,7 +60,7 @@ export default class Sparky extends React.Component<State> {
     const filters = ['YOU 0', 'YOU']
     const Combatants = Combatant
       ? Object.entries(Combatant)
-          .filter(([k, v]) => filters.includes(k))
+          .filter(([k, v]) => filters.indexOf(k) > -1)
           .sort(([_k1, v1], [_k2, v2]) => Number(v2.encdps) - Number(v1.encdps))
           .map(this.renderCombatant)
       : null;
