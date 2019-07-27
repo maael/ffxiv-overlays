@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[14],{eRa9:function(n,t,e){"use strict";e.r(t);var a=e("q1tI"),u=e.n(a);t.default=function(){return u.a.createElement("div",null,"Spark")}},wLWt:function(n,t,e){(window.__NEXT_P=window.__NEXT_P||[]).push(["/t/sparky",function(){var n=e("eRa9");return{page:n.default||n}}])}},[["wLWt",1,0]]]);
