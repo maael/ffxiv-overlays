@@ -1,5 +1,39 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/t/minidps.js"],{
 
+/***/ "./components/DragCorner.tsx":
+/*!***********************************!*\
+  !*** ./components/DragCorner.tsx ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/Users/matthew.elphick/personal/ffxiv-overlays/components/DragCorner.tsx";
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      position: 'absolute',
+      background: 'grey',
+      width: 10,
+      height: 10,
+      bottom: 0,
+      right: 0,
+      opacity: 0.5
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 2
+    },
+    __self: this
+  });
+});
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/array/from.js ***!
@@ -3921,10 +3955,10 @@ module.exports = __webpack_require__(/*! ./dist/style */ "./node_modules/styled-
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Base; });
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_entries__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/entries */ "./node_modules/@babel/runtime-corejs2/core-js/object/entries.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_entries__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_entries__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Minidps; });
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_entries__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/entries */ "./node_modules/@babel/runtime-corejs2/core-js/object/entries.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_entries__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_entries__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
@@ -3936,7 +3970,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _util_simulator__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../util/simulator */ "./util/simulator.ts");
+/* harmony import */ var _components_DragCorner__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/DragCorner */ "./components/DragCorner.tsx");
+/* harmony import */ var _util_simulator__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../util/simulator */ "./util/simulator.ts");
+/* harmony import */ var _util_colours__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../util/colours */ "./util/colours.ts");
 
 
 
@@ -3951,34 +3987,78 @@ var _jsxFileName = "/Users/matthew.elphick/personal/ffxiv-overlays/pages/t/minid
 
 
 
-var Base =
+
+
+var Minidps =
 /*#__PURE__*/
 function (_React$Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__["default"])(Base, _React$Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__["default"])(Minidps, _React$Component);
 
-  function Base() {
+  function Minidps() {
     var _getPrototypeOf2;
 
     var _this;
 
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Base);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Minidps);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, (_getPrototypeOf2 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Base)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, (_getPrototypeOf2 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Minidps)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "state", {});
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "simulator", void 0);
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "onOverlayDataUpdate", function (data) {
       _this.setState(data.detail);
     });
 
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "renderCombatant", function (_ref) {
+      var _ref2 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, 2),
+          k = _ref2[0],
+          v = _ref2[1];
+
+      var upperJob = (v.Job || '').toUpperCase();
+      var jobColour = Object(_util_colours__WEBPACK_IMPORTED_MODULE_13__["default"])(upperJob);
+      return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("div", {
+        style: {
+          "float": 'left',
+          padding: '0 15px',
+          textAlign: 'center',
+          color: '#FFFFFF',
+          fontWeight: 'bold',
+          textShadow: "0 0 5px ".concat(jobColour)
+        },
+        key: v.name,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("div", {
+        style: {
+          fontSize: '0.8em'
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39
+        },
+        __self: this
+      }, v.name, " (", (v.Job || '').toUpperCase(), ")"), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40
+        },
+        __self: this
+      }, v.encdps));
+    });
+
     return _this;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__["default"])(Base, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__["default"])(Minidps, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
@@ -3992,8 +4072,13 @@ function (_React$Component) {
       });
 
       if (window.location.search.includes('simulator')) {
-        Object(_util_simulator__WEBPACK_IMPORTED_MODULE_11__["default"])(1000);
+        this.simulator = Object(_util_simulator__WEBPACK_IMPORTED_MODULE_12__["default"])(1000);
       }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      if (_util_simulator__WEBPACK_IMPORTED_MODULE_12__["default"]) clearInterval(this.simulator);
     }
   }, {
     key: "render",
@@ -4002,67 +4087,52 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_10___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(styled_jsx_style__WEBPACK_IMPORTED_MODULE_9___default.a, {
         id: "604295086",
         __self: this
-      }, "body{font-family:sans-serif;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXR0aGV3LmVscGhpY2svcGVyc29uYWwvZmZ4aXYtb3ZlcmxheXMvcGFnZXMvdC9taW5pZHBzLnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUErQjJCLEFBR29DLHVCQUN6QiIsImZpbGUiOiIvVXNlcnMvbWF0dGhldy5lbHBoaWNrL3BlcnNvbmFsL2ZmeGl2LW92ZXJsYXlzL3BhZ2VzL3QvbWluaWRwcy50c3giLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuaW1wb3J0IHNpbXVsYXRvciBmcm9tICcuLi8uLi91dGlsL3NpbXVsYXRvcic7XG5pbXBvcnQge0NvbWJhdGFudE9wdGlvbnMsIEVuY291bnRlck9wdGlvbnN9IGZyb20gJy4uLy4uL3V0aWwvdHlwZXMnO1xuXG5pbnRlcmZhY2UgU3RhdGUge1xuICBDb21iYXRhbnQ/OiBSZWNvcmQ8c3RyaW5nLCBQYXJ0aWFsPFJlY29yZDxDb21iYXRhbnRPcHRpb25zLCBzdHJpbmc+Pj47XG4gIEVuY291bnRlcj86IFBhcnRpYWw8UmVjb3JkPEVuY291bnRlck9wdGlvbnMsIHN0cmluZz4+O1xuICBpc0FjdGl2ZT86IGJvb2xlYW47XG59XG5cbmV4cG9ydCBkZWZhdWx0IGNsYXNzIEJhc2UgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQ8U3RhdGU+IHtcbiAgc3RhdGU6IFN0YXRlID0ge307XG4gIGNvbXBvbmVudERpZE1vdW50ICgpIHtcbiAgICBpZiAodHlwZW9mIHdpbmRvdyA9PT0gJ3VuZGVmaW5lZCcpIHJldHVybjtcbiAgICBkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdvbk92ZXJsYXlEYXRhVXBkYXRlJywgdGhpcy5vbk92ZXJsYXlEYXRhVXBkYXRlKTtcbiAgICB3aW5kb3cuYWRkRXZlbnRMaXN0ZW5lcignbWVzc2FnZScsIChlKSA9PiB7XG4gICAgICBpZiAoZS5kYXRhLnR5cGUgPT09ICdvbk92ZXJsYXlEYXRhVXBkYXRlJykge1xuICAgICAgICB0aGlzLm9uT3ZlcmxheURhdGFVcGRhdGUoZS5kYXRhKTtcbiAgICAgIH1cbiAgICB9KTtcbiAgICBpZiAod2luZG93LmxvY2F0aW9uLnNlYXJjaC5pbmNsdWRlcygnc2ltdWxhdG9yJykpIHtcbiAgICAgIHNpbXVsYXRvcigxMDAwKTtcbiAgICB9XG4gIH1cbiAgb25PdmVybGF5RGF0YVVwZGF0ZSA9IChkYXRhOiBhbnkpID0+IHtcbiAgICB0aGlzLnNldFN0YXRlKGRhdGEuZGV0YWlsKTtcbiAgfVxuICByZW5kZXIgKCkge1xuICAgIGNvbnN0IHtDb21iYXRhbnR9ID0gdGhpcy5zdGF0ZTtcbiAgICByZXR1cm4gKFxuICAgICAgPD5cbiAgICAgICAgPHN0eWxlIGdsb2JhbCBqc3g+e2BcbiAgICAgICAgICBib2R5IHtcbiAgICAgICAgICAgIGZvbnQtZmFtaWx5OiBzYW5zLXNlcmlmO1xuICAgICAgICAgIH1cbiAgICAgICAgYH08L3N0eWxlPlxuICAgICAgICB7Q29tYmF0YW50ID8gT2JqZWN0LmVudHJpZXMoQ29tYmF0YW50KS5zb3J0KChbX2sxLCB2MV0sIFtfazIsIHYyXSkgPT4gTnVtYmVyKHYyLmRhbWFnZSkgLSBOdW1iZXIodjEuZGFtYWdlKSkubWFwKChbaywgdl0pID0+IChcbiAgICAgICAgICA8ZGl2IHN0eWxlPXt7ZmxvYXQ6ICdsZWZ0JywgcGFkZGluZzogJzAgMTVweCcsIHRleHRBbGlnbjogJ2NlbnRlcid9fSBrZXk9e3YubmFtZX0+XG4gICAgICAgICAgICA8ZGl2IHN0eWxlPXt7Zm9udFNpemU6ICcwLjhlbSd9fT57di5uYW1lfSAoeyh2LkpvYiB8fCAnJykudG9VcHBlckNhc2UoKX0pPC9kaXY+XG4gICAgICAgICAgICA8ZGl2Pnt2LmRhbWFnZX08L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgKSkgOiA8ZGl2PkxvYWRpbmcgZGF0YS4uLjwvZGl2Pn1cbiAgICAgIDwvPlxuICAgICk7XG4gIH1cbn1cblxuIl19 */\n/*@ sourceURL=/Users/matthew.elphick/personal/ffxiv-overlays/pages/t/minidps.tsx */"), Combatant ? _babel_runtime_corejs2_core_js_object_entries__WEBPACK_IMPORTED_MODULE_1___default()(Combatant).sort(function (_ref, _ref2) {
-        var _ref3 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref, 2),
-            _k1 = _ref3[0],
-            v1 = _ref3[1];
-
-        var _ref4 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref2, 2),
-            _k2 = _ref4[0],
-            v2 = _ref4[1];
-
-        return Number(v2.damage) - Number(v1.damage);
-      }).map(function (_ref5) {
-        var _ref6 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref5, 2),
-            k = _ref6[0],
-            v = _ref6[1];
-
-        return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("div", {
-          style: {
-            "float": 'left',
-            padding: '0 15px',
-            textAlign: 'center'
-          },
-          key: v.name,
-          className: "jsx-604295086",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 38
-          },
-          __self: this
-        }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("div", {
-          style: {
-            fontSize: '0.8em'
-          },
-          className: "jsx-604295086",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 39
-          },
-          __self: this
-        }, v.name, " (", (v.Job || '').toUpperCase(), ")"), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("div", {
-          className: "jsx-604295086",
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 40
-          },
-          __self: this
-        }, v.damage));
-      }) : react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("div", {
-        className: "jsx-604295086",
+      }, "body{font-family:sans-serif;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXR0aGV3LmVscGhpY2svcGVyc29uYWwvZmZ4aXYtb3ZlcmxheXMvcGFnZXMvdC9taW5pZHBzLnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUErQzJCLEFBR29DLHVCQUN6QiIsImZpbGUiOiIvVXNlcnMvbWF0dGhldy5lbHBoaWNrL3BlcnNvbmFsL2ZmeGl2LW92ZXJsYXlzL3BhZ2VzL3QvbWluaWRwcy50c3giLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuaW1wb3J0IERyYWdDb3JuZXIgZnJvbSAnLi4vLi4vY29tcG9uZW50cy9EcmFnQ29ybmVyJztcbmltcG9ydCBzaW11bGF0b3IgZnJvbSAnLi4vLi4vdXRpbC9zaW11bGF0b3InO1xuaW1wb3J0IGpvYkNvbG91cnMgZnJvbSAnLi4vLi4vdXRpbC9jb2xvdXJzJ1xuaW1wb3J0IHtDb21iYXRhbnRPcHRpb25zLCBFbmNvdW50ZXJPcHRpb25zfSBmcm9tICcuLi8uLi91dGlsL3R5cGVzJztcblxuaW50ZXJmYWNlIFN0YXRlIHtcbiAgQ29tYmF0YW50PzogUmVjb3JkPHN0cmluZywgUGFydGlhbDxSZWNvcmQ8Q29tYmF0YW50T3B0aW9ucywgc3RyaW5nPj4+O1xuICBFbmNvdW50ZXI/OiBQYXJ0aWFsPFJlY29yZDxFbmNvdW50ZXJPcHRpb25zLCBzdHJpbmc+PjtcbiAgaXNBY3RpdmU/OiBib29sZWFuO1xufVxuXG5leHBvcnQgZGVmYXVsdCBjbGFzcyBNaW5pZHBzIGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50PFN0YXRlPiB7XG4gIHN0YXRlOiBTdGF0ZSA9IHt9O1xuICBzaW11bGF0b3I/OiBOb2RlSlMuVGltZW91dDtcbiAgY29tcG9uZW50RGlkTW91bnQgKCkge1xuICAgIGlmICh0eXBlb2Ygd2luZG93ID09PSAndW5kZWZpbmVkJykgcmV0dXJuO1xuICAgIGRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ29uT3ZlcmxheURhdGFVcGRhdGUnLCB0aGlzLm9uT3ZlcmxheURhdGFVcGRhdGUpO1xuICAgIHdpbmRvdy5hZGRFdmVudExpc3RlbmVyKCdtZXNzYWdlJywgKGUpID0+IHtcbiAgICAgIGlmIChlLmRhdGEudHlwZSA9PT0gJ29uT3ZlcmxheURhdGFVcGRhdGUnKSB7XG4gICAgICAgIHRoaXMub25PdmVybGF5RGF0YVVwZGF0ZShlLmRhdGEpO1xuICAgICAgfVxuICAgIH0pO1xuICAgIGlmICh3aW5kb3cubG9jYXRpb24uc2VhcmNoLmluY2x1ZGVzKCdzaW11bGF0b3InKSkge1xuICAgICAgdGhpcy5zaW11bGF0b3IgPSBzaW11bGF0b3IoMTAwMCk7XG4gICAgfVxuICB9XG4gIGNvbXBvbmVudFdpbGxVbm1vdW50ICgpIHtcbiAgICBpZiAoc2ltdWxhdG9yKSBjbGVhckludGVydmFsKHRoaXMuc2ltdWxhdG9yKTtcbiAgfVxuICBvbk92ZXJsYXlEYXRhVXBkYXRlID0gKGRhdGE6IGFueSkgPT4ge1xuICAgIHRoaXMuc2V0U3RhdGUoZGF0YS5kZXRhaWwpO1xuICB9XG4gIHJlbmRlckNvbWJhdGFudCA9IChbaywgdl0pID0+IHtcbiAgICBjb25zdCB1cHBlckpvYiA9ICh2LkpvYiB8fCAnJykudG9VcHBlckNhc2UoKTtcbiAgICBjb25zdCBqb2JDb2xvdXIgPSBqb2JDb2xvdXJzKHVwcGVySm9iKTtcbiAgICByZXR1cm4gKFxuICAgICAgPGRpdiBzdHlsZT17e2Zsb2F0OiAnbGVmdCcsIHBhZGRpbmc6ICcwIDE1cHgnLCB0ZXh0QWxpZ246ICdjZW50ZXInLCBjb2xvcjogJyNGRkZGRkYnLCBmb250V2VpZ2h0OiAnYm9sZCcsIHRleHRTaGFkb3c6IGAwIDAgNXB4ICR7am9iQ29sb3VyfWB9fSBrZXk9e3YubmFtZX0+XG4gICAgICAgIDxkaXYgc3R5bGU9e3tmb250U2l6ZTogJzAuOGVtJ319Pnt2Lm5hbWV9ICh7KHYuSm9iIHx8ICcnKS50b1VwcGVyQ2FzZSgpfSk8L2Rpdj5cbiAgICAgICAgPGRpdj57di5lbmNkcHN9PC9kaXY+XG4gICAgICA8L2Rpdj5cbiAgICApO1xuICB9XG4gIHJlbmRlciAoKSB7XG4gICAgY29uc3Qge0NvbWJhdGFudH0gPSB0aGlzLnN0YXRlO1xuICAgIHJldHVybiAoXG4gICAgICA8PlxuICAgICAgICA8c3R5bGUgZ2xvYmFsIGpzeD57YFxuICAgICAgICAgIGJvZHkge1xuICAgICAgICAgICAgZm9udC1mYW1pbHk6IHNhbnMtc2VyaWY7XG4gICAgICAgICAgfVxuICAgICAgICBgfTwvc3R5bGU+XG4gICAgICAgIDxEcmFnQ29ybmVyIC8+XG4gICAgICAgIHtDb21iYXRhbnQgPyBPYmplY3QuZW50cmllcyhDb21iYXRhbnQpLnNvcnQoKFtfazEsIHYxXSwgW19rMiwgdjJdKSA9PiBOdW1iZXIodjIuZW5jZHBzKSAtIE51bWJlcih2MS5lbmNkcHMpKS5tYXAodGhpcy5yZW5kZXJDb21iYXRhbnQpIDogbnVsbH1cbiAgICAgIDwvPlxuICAgICk7XG4gIH1cbn1cblxuIl19 */\n/*@ sourceURL=/Users/matthew.elphick/personal/ffxiv-overlays/pages/t/minidps.tsx */"), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(_components_DragCorner__WEBPACK_IMPORTED_MODULE_11__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42
+          lineNumber: 53
         },
         __self: this
-      }, "Loading data..."));
+      }), Combatant ? _babel_runtime_corejs2_core_js_object_entries__WEBPACK_IMPORTED_MODULE_0___default()(Combatant).sort(function (_ref3, _ref4) {
+        var _ref5 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref3, 2),
+            _k1 = _ref5[0],
+            v1 = _ref5[1];
+
+        var _ref6 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref4, 2),
+            _k2 = _ref6[0],
+            v2 = _ref6[1];
+
+        return Number(v2.encdps) - Number(v1.encdps);
+      }).map(this.renderCombatant) : null);
     }
   }]);
 
-  return Base;
+  return Minidps;
 }(react__WEBPACK_IMPORTED_MODULE_10___default.a.Component);
 
 
+
+/***/ }),
+
+/***/ "./util/colours.ts":
+/*!*************************!*\
+  !*** ./util/colours.ts ***!
+  \*************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return jobColours; });
+/* harmony import */ var _roles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./roles */ "./util/roles.ts");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./types */ "./util/types.ts");
+
+
+function jobColours(job) {
+  var role = _roles__WEBPACK_IMPORTED_MODULE_0__["jobRoleMap"][job];
+  return _types__WEBPACK_IMPORTED_MODULE_1__["RoleColours"][role] || _types__WEBPACK_IMPORTED_MODULE_1__["RoleColours"]["default"];
+}
+;
 
 /***/ }),
 
@@ -4243,6 +4313,29 @@ function randomBetween(min, max) {
 
 /***/ }),
 
+/***/ "./util/roles.ts":
+/*!***********************!*\
+  !*** ./util/roles.ts ***!
+  \***********************/
+/*! exports provided: roleJobMap, jobRoleMap */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "roleJobMap", function() { return roleJobMap; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "jobRoleMap", function() { return jobRoleMap; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./types */ "./util/types.ts");
+
+
+var _roleJobMap, _jobRoleMap;
+
+
+var roleJobMap = (_roleJobMap = {}, Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_roleJobMap, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].HEALER, [_types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].WHM, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].SCH, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].AST]), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_roleJobMap, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].TANK, [_types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].PLD, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].WAR, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].DRK, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].GNB]), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_roleJobMap, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].DPS, [_types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].SMN, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].BRD, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].DRG, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].MNK, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].NIN, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].BLM, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].MCH, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].SAM, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].RDM, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].DNC]), _roleJobMap);
+var jobRoleMap = (_jobRoleMap = {}, Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jobRoleMap, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].WHM, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].HEALER), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jobRoleMap, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].SCH, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].HEALER), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jobRoleMap, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].AST, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].HEALER), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jobRoleMap, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].PLD, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].TANK), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jobRoleMap, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].WAR, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].TANK), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jobRoleMap, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].DRK, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].TANK), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jobRoleMap, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].GNB, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].TANK), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jobRoleMap, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].SMN, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].DPS), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jobRoleMap, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].BRD, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].DPS), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jobRoleMap, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].DRG, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].DPS), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jobRoleMap, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].MNK, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].DPS), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jobRoleMap, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].NIN, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].DPS), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jobRoleMap, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].BLM, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].DPS), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jobRoleMap, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].MCH, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].DPS), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jobRoleMap, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].SAM, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].DPS), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jobRoleMap, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].RDM, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].DPS), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_jobRoleMap, _types__WEBPACK_IMPORTED_MODULE_1__["JobAbbreviations"].DNC, _types__WEBPACK_IMPORTED_MODULE_1__["Roles"].DPS), _jobRoleMap);
+
+/***/ }),
+
 /***/ "./util/simulator.ts":
 /*!***************************!*\
   !*** ./util/simulator.ts ***!
@@ -4293,7 +4386,11 @@ function updateEvent(e) {
     e.detail.Combatant[k].duration = duration;
     e.detail.Combatant[k].DURATION = duration_ms;
     e.detail.Combatant[k].damage = Object(_random__WEBPACK_IMPORTED_MODULE_4__["randomBetween"])(2000, 9000);
+    e.detail.Combatant[k].DPS = Object(_random__WEBPACK_IMPORTED_MODULE_4__["randomBetween"])(2000, 9000);
+    e.detail.Combatant[k].encdps = Object(_random__WEBPACK_IMPORTED_MODULE_4__["randomBetween"])(2000, 9000);
     e.detail.Encounter.damage += e.detail.Combatant[k].damage;
+    e.detail.Encounter.dps += e.detail.Combatant[k].dps;
+    e.detail.Encounter.encdps += e.detail.Combatant[k].encdps;
   });
 
   return e.detail;
@@ -4306,7 +4403,7 @@ function updateEvent(e) {
   });
   document.dispatchEvent(baseEvent);
   if (window.location.search.includes('debug')) console.info('displatch:start', baseEvent.detail);
-  setInterval(function () {
+  return setInterval(function () {
     var e = new CustomEvent(OVERLAY_EVENT, {
       detail: updateEvent(baseEvent)
     });
@@ -4317,7 +4414,186 @@ function updateEvent(e) {
 
 /***/ }),
 
-/***/ 2:
+/***/ "./util/types.ts":
+/*!***********************!*\
+  !*** ./util/types.ts ***!
+  \***********************/
+/*! exports provided: EncounterOptions, CombatantOptions, JobAbbreviations, Roles, RoleColours */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EncounterOptions", function() { return EncounterOptions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CombatantOptions", function() { return CombatantOptions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JobAbbreviations", function() { return JobAbbreviations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Roles", function() { return Roles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleColours", function() { return RoleColours; });
+/**
+ * EncounterOptions + CombatantOptions taken from here:
+ * https://github.com/billyvg/OverlayPlugin-themes/blob/master/app/coreUtils.js
+ */
+var EncounterOptions;
+
+(function (EncounterOptions) {
+  EncounterOptions["ENCOUNTER_N"] = "n";
+  EncounterOptions["ENCOUNTER_T"] = "t";
+  EncounterOptions["TITLE"] = "title";
+  EncounterOptions["DURATION"] = "duration";
+  EncounterOptions["DURATION_SECONDS"] = "DURATION";
+  EncounterOptions["DAMAGE"] = "damage";
+  EncounterOptions["DAMAGE_MILLIONS"] = "damage-m";
+  EncounterOptions["DAMAGE_ROUNDED_THOUSANDS"] = "DAMAGE-k";
+  EncounterOptions["DAMAGE_ROUNDED_MILLIONS"] = "DAMAGE-m";
+  EncounterOptions["DPS"] = "dps";
+  EncounterOptions["DPS_ROUNDED"] = "DPS";
+  EncounterOptions["DPS_ROUNDED_THOUSANDS"] = "DPS-k";
+  EncounterOptions["HITS"] = "hits";
+  EncounterOptions["CRITICAL_HITS"] = "crithits";
+  EncounterOptions["CRITICAL_PERCENTAGE"] = "crithit%";
+  EncounterOptions["MISSES"] = "misses";
+  EncounterOptions["HIT_FAILED"] = "hitfailed";
+  EncounterOptions["SWINGS"] = "swings";
+  EncounterOptions["TO_HIT"] = "tohit";
+  EncounterOptions["TO_HIT_ROUNDED"] = "TOHIT";
+  EncounterOptions["MAX_HIT"] = "maxhit";
+  EncounterOptions["MAX_HIT_SHORT"] = "MAXHIT";
+  EncounterOptions["HEALED"] = "healed";
+  EncounterOptions["HPS"] = "enchps";
+  EncounterOptions["HPS_ROUNDED"] = "ENCHPS";
+  EncounterOptions["HPS_ROUNDED_THOUSANDS"] = "ENCHPS-k";
+  EncounterOptions["CRITICAL_HEALS"] = "critheals";
+  EncounterOptions["CRITICAL_HEALS_PERCENTAGE"] = "critheal%";
+  EncounterOptions["HEALS"] = "heals";
+  EncounterOptions["CURES"] = "cures";
+  EncounterOptions["MAX_HEAL"] = "maxheal";
+  EncounterOptions["MAX_HEAL_SIMPLE"] = "MAXHEAL";
+  EncounterOptions["DAMAGE_TAKEN"] = "damagetaken";
+  EncounterOptions["HEALS_TAKEN"] = "healstaken";
+  EncounterOptions["POWER_DRAIN"] = "powerdrain";
+  EncounterOptions["POWER_HEAL"] = "powerheal";
+  EncounterOptions["KILLS"] = "kills";
+  EncounterOptions["DEATHS"] = "deaths";
+  EncounterOptions["CURRENT_ZONE_NAME"] = "CurrentZoneName";
+  EncounterOptions["DPS_10_SECONDS"] = "Last10DPS";
+  EncounterOptions["DPS_30_SECONDS"] = "Last30DPS";
+  EncounterOptions["DPS_60_SECONDS"] = "Last60DPS";
+})(EncounterOptions || (EncounterOptions = {}));
+
+var CombatantOptions;
+
+(function (CombatantOptions) {
+  CombatantOptions["COMBATANT_N"] = "n";
+  CombatantOptions["COMBATANT_T"] = "t";
+  CombatantOptions["NAME"] = "name";
+  CombatantOptions["DURATION"] = "duration";
+  CombatantOptions["DURATION_SECONDS"] = "DURATION";
+  CombatantOptions["DAMAGE"] = "damage";
+  CombatantOptions["DAMAGE_MILLIONS"] = "damage-m";
+  CombatantOptions["DAMAGE_ROUNDED_THOUSANDS"] = "DAMAGE-k";
+  CombatantOptions["DAMAGE_ROUNDED_MILLIONS"] = "DAMAGE-m";
+  CombatantOptions["DAMAGE_PERCENT"] = "damage%";
+  CombatantOptions["DPS"] = "encdps";
+  CombatantOptions["DPS_ROUNDED"] = "ENCDPS";
+  CombatantOptions["DPS_ROUNDED_THOUSANDS"] = "ENCDPS-k";
+  CombatantOptions["HITS"] = "hits";
+  CombatantOptions["CRITICAL_HITS"] = "crithits";
+  CombatantOptions["CRITICAL_PERCENTAGE"] = "crithit%";
+  CombatantOptions["MISSES"] = "misses";
+  CombatantOptions["HIT_FAILED"] = "hitfailed";
+  CombatantOptions["SWINGS"] = "swings";
+  CombatantOptions["TO_HIT"] = "tohit";
+  CombatantOptions["TO_HIT_ROUNDED"] = "TOHIT";
+  CombatantOptions["MAX_HIT"] = "maxhit";
+  CombatantOptions["MAX_HIT_SHORT"] = "MAXHIT";
+  CombatantOptions["HEALED"] = "healed";
+  CombatantOptions["HEALED_PERCENT"] = "healed%";
+  CombatantOptions["HPS"] = "enchps";
+  CombatantOptions["HPS_ROUNDED"] = "ENCHPS";
+  CombatantOptions["HPS_ROUNDED_THOUSANDS"] = "ENCHPS-k";
+  CombatantOptions["CRITICAL_HEALS"] = "critheals";
+  CombatantOptions["CRITICAL_HEALS_PERCENTAGE"] = "critheal%";
+  CombatantOptions["HEALS"] = "heals";
+  CombatantOptions["CURES"] = "cures";
+  CombatantOptions["MAX_HEAL"] = "maxheal";
+  CombatantOptions["MAX_HEAL_SIMPLE"] = "MAXHEAL";
+  CombatantOptions["DAMAGE_TAKEN"] = "damagetaken";
+  CombatantOptions["HEALS_TAKEN"] = "healstaken";
+  CombatantOptions["POWER_DRAIN"] = "powerdrain";
+  CombatantOptions["POWER_HEAL"] = "powerheal";
+  CombatantOptions["KILLS"] = "kills";
+  CombatantOptions["DEATHS"] = "deaths";
+  CombatantOptions["THREAT_STRENGTH"] = "threatstr";
+  CombatantOptions["THREAT_DELTA"] = "threatdelta";
+  CombatantOptions["JOB"] = "Job";
+  CombatantOptions["PARRY_RATE"] = "ParryPct";
+  CombatantOptions["BLOCK_RATE"] = "BlockPct";
+  CombatantOptions["INC_TO_HIT"] = "IncToHit";
+  CombatantOptions["OVERHEAL_PERCENT"] = "OverHealPct";
+  CombatantOptions["JOB_OR_NAME"] = "JobOrName";
+  CombatantOptions["DPS_10_SECONDS"] = "Last10DPS";
+  CombatantOptions["DPS_30_SECONDS"] = "Last30DPS";
+  CombatantOptions["DPS_60_SECONDS"] = "Last60DPS";
+  CombatantOptions["NAME_TRUNC3"] = "NAME3";
+  CombatantOptions["NAME_TRUNC4"] = "NAME4";
+  CombatantOptions["NAME_TRUNC5"] = "NAME5";
+  CombatantOptions["NAME_TRUNC6"] = "NAME6";
+  CombatantOptions["NAME_TRUNC7"] = "NAME7";
+  CombatantOptions["NAME_TRUNC8"] = "NAME8";
+  CombatantOptions["NAME_TRUNC9"] = "NAME9";
+  CombatantOptions["NAME_TRUNC10"] = "NAME10";
+  CombatantOptions["NAME_TRUNC11"] = "NAME11";
+  CombatantOptions["NAME_TRUNC12"] = "NAME12";
+  CombatantOptions["NAME_TRUNC13"] = "NAME13";
+  CombatantOptions["NAME_TRUNC14"] = "NAME14";
+  CombatantOptions["NAME_TRUNC15"] = "NAME15";
+  CombatantOptions["CUSTOM_ACTUAL_HEALING"] = "custom_actual_healing";
+})(CombatantOptions || (CombatantOptions = {}));
+
+var JobAbbreviations;
+
+(function (JobAbbreviations) {
+  JobAbbreviations["PLD"] = "PLD";
+  JobAbbreviations["WAR"] = "WAR";
+  JobAbbreviations["DRK"] = "DRK";
+  JobAbbreviations["GNB"] = "GNB";
+  JobAbbreviations["SCH"] = "SCH";
+  JobAbbreviations["AST"] = "AST";
+  JobAbbreviations["WHM"] = "WHM";
+  JobAbbreviations["SMN"] = "SMN";
+  JobAbbreviations["BRD"] = "BRD";
+  JobAbbreviations["DRG"] = "DRG";
+  JobAbbreviations["MNK"] = "MNK";
+  JobAbbreviations["NIN"] = "NIN";
+  JobAbbreviations["BLM"] = "BLM";
+  JobAbbreviations["MCH"] = "MCH";
+  JobAbbreviations["SAM"] = "SAM";
+  JobAbbreviations["RDM"] = "RDM";
+  JobAbbreviations["DNC"] = "DNC";
+})(JobAbbreviations || (JobAbbreviations = {}));
+
+var Roles;
+
+(function (Roles) {
+  Roles["HEALER"] = "HEALER";
+  Roles["TANK"] = "TANK";
+  Roles["RANGED PHYSICAL DPS"] = "RANGED PHYSICAL DPS";
+  Roles["MELEE PHYSICAL DPS"] = "MELEE PHYSICAL DPS";
+  Roles["RANGED MAGIC DPS"] = "RANGED MAGIC DPS";
+  Roles["DPS"] = "DPS";
+})(Roles || (Roles = {}));
+
+var RoleColours;
+
+(function (RoleColours) {
+  RoleColours["HEALER"] = "green";
+  RoleColours["TANK"] = "blue";
+  RoleColours["DPS"] = "red";
+  RoleColours["default"] = "grey";
+})(RoleColours || (RoleColours = {}));
+
+/***/ }),
+
+/***/ 1:
 /*!************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Ft%2Fminidps&absolutePagePath=%2FUsers%2Fmatthew.elphick%2Fpersonal%2Fffxiv-overlays%2Fpages%2Ft%2Fminidps.tsx ***!
   \************************************************************************************************************************************************************/
@@ -4340,5 +4616,5 @@ module.exports = dll_7aff549c98b978433226;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=minidps.js.map
