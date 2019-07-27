@@ -31,6 +31,9 @@ export default class Sparky extends React.Component<State> {
       this.simulator = simulator(1000);
     }
   }
+  componentWillUpdate(_newProps, newState) {
+    console.info('state', newState, this.state);
+  }
   componentWillUnmount () {
     if (simulator) clearInterval(this.simulator);
   }
@@ -38,7 +41,7 @@ export default class Sparky extends React.Component<State> {
     const Combatant: Record<string, Partial<Record<CombatantOptions, string>>> = data.detail.Combatant;
     const {encOverTime} = this.state;
     Object.entries(Combatant).forEach(([k, v]) => {
-      encOverTime.set(k, [...(encOverTime.get(k) || []).splice(-25), Number(v.encdps)])
+      encOverTime.set(k, [...(encOverTime.get(k) || []).splice(-25), Number(v.encdps)].filter((i) => !isNaN(i)))
     });
     this.setState({...data.detail, encOverTime});
   }
