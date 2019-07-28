@@ -30,14 +30,6 @@ Super minimal theme of player name, job, and damage.
 6. Add `?simulator` as a query param to force themes to use simulated values
 7. :sparkles:
 
-### Notes
-
-- When you add a new page you will have to add it to [next.config.js](./next.config.js), adding an entry to the exportPathMap that looks like this:
-
-```js
-  '/t/<theme>': { page: '/t/<theme>' },
-```
-
 ## Deployment
 
 Hosted on GitHub pages.
