@@ -1,6 +1,7 @@
 import {createCombatants} from './createCombatant';
 import createEncounter from './createEncounter';
 import {randomBetween} from './random';
+import {JobAbbreviations} from './types';
 
 const OVERLAY_EVENT = 'onOverlayDataUpdate';
 
@@ -26,7 +27,7 @@ function updateEvent(e: any) {
   e.detail.Encounter.damage = 0;
   e.detail.Encounter.duration = duration;
   e.detail.Encounter.DURATION = duration_ms;
-  Object.keys(e.detail.Combatant).forEach((k) => {
+  Object.keys(e.detail.Combatant).forEach((k, i) => {
     e.detail.Combatant[k].duration = duration;
     e.detail.Combatant[k].DURATION = duration_ms;
     e.detail.Combatant[k].damage = randomBetween(2000, 9000);
@@ -35,7 +36,11 @@ function updateEvent(e: any) {
     e.detail.Encounter.damage += e.detail.Combatant[k].damage;
     e.detail.Encounter.dps += e.detail.Combatant[k].dps;
     e.detail.Encounter.encdps += e.detail.Combatant[k].encdps;
-  })
+  });
+  e.detail.Combatant = Object.entries(e.detail.Combatant).sort(([_k1, v1]: any, [_k2, v2]: any) => Number(v2.encdps) - Number(v1.encdps)).reduce((obj, [k, v]) => ({
+    ...obj,
+    [k]: v
+  }), {});
   return e.detail;
 }
 
@@ -43,6 +48,7 @@ export default (ms: number = 3000) => {
   const baseEvent = new CustomEvent(OVERLAY_EVENT, {detail: getEvent()})
   document.dispatchEvent(baseEvent);
   if (window.location.search.includes('debug')) console.info('displatch:start', baseEvent.detail);
+  if (window.location.search.includes('initialOnly')) return;
   return setInterval(() => {
     const e = new CustomEvent(OVERLAY_EVENT, {detail: updateEvent(baseEvent)})
     document.dispatchEvent(e);

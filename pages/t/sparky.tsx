@@ -2,7 +2,7 @@ import React from 'react';
 import {Sparklines, SparklinesLine} from 'react-sparklines';
 import ActBase, {State as ActBaseState} from '../../components/ActBase';
 import Settings from '../../components/Settings';
-import DragCorner from '../../components/DragCorner';
+// import SettingsPanel from '../../components/SettingsPanel';
 import jobColours from '../../util/colours'
 import {jobRoleMap} from '../../util/roles';
 import {RoleColoursLight} from '../../util/types';
@@ -48,11 +48,10 @@ export default class Sparky extends React.Component<State> {
           const Combatants = Combatant
             ? Object.entries(Combatant)
                 .filter(([k, v]) => filters.indexOf(k) > -1)
-                .sort(([_k1, v1], [_k2, v2]) => Number(v2.encdps) - Number(v1.encdps))
                 .map(this.renderCombatant)
             : null;
           return (
-            <Settings<{a?: string}>>
+            <SparkySettings>
               <style global jsx>{`
                 body {
                   font-family: sans-serif;
@@ -73,12 +72,43 @@ export default class Sparky extends React.Component<State> {
                   fill: ${RoleColoursLight.DPS} !important;
                 }
               `}</style>
-              <DragCorner />
               {Combatants}
-            </Settings>
+            </SparkySettings>
           );
         }}
       </ActBase>
+    );
+  }
+}
+
+class SparkySettings extends React.Component {
+  state = {
+    playerFilters: []
+  };
+  render () {
+    return (
+      <Settings<{playerFilters: string[]}> themeKey='sparky'>
+        {/*<SettingsPanel>
+          {[...this.state.playerFilters, ''].map((f, i) => (
+            <div key={`${i}`}>
+              <span>Player Filter:</span>
+              <input
+                type='text'
+                onChange={({target}) => {
+                  const ar = [].concat(this.state.playerFilters);
+                  if (target.value.length === 0) {
+                    ar.splice(i, 1);
+                  } else {
+                    ar[i] = target.value;
+                  }
+                  this.setState({playerFilters: ar})
+                }}
+              />
+            </div>
+          ))}
+              </SettingsPanel>*/}
+        {this.props.children}
+      </Settings>
     );
   }
 }

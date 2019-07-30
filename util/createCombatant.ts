@@ -1,11 +1,12 @@
-import {CombatantOptions} from './types';
+import {JobAbbreviations, CombatantOptions} from './types';
 
 function createCombatant (_: unknown, i: number): {[k: string]: Partial<Record<CombatantOptions, string>>} {
+  const job = JobAbbreviations[Object.values(JobAbbreviations)[Math.floor(Math.random() * Object.values(JobAbbreviations).length)]];
   return {
     [`YOU ${i}`]: {
       "n": "\n",
       "t": "\t",
-      "name": `YOU ${i}`,
+      "name": i === 0 ? 'YOU' : `${job} ${i}`,
       "duration": "00:00",
       "DURATION": "0",
       "damage": "0",
@@ -61,7 +62,7 @@ function createCombatant (_: unknown, i: number): {[k: string]: Partial<Record<C
       "Last10DPS": "20",
       "Last30DPS": "0",
       "Last60DPS": "0",
-      "Job": "Mnk",
+      "Job": job,
       "ParryPct": "6%",
       "BlockPct": "0%",
       "IncToHit": "92.73",
