@@ -116,40 +116,6 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "./components/DragCorner.tsx":
-/*!***********************************!*\
-  !*** ./components/DragCorner.tsx ***!
-  \***********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/matthew.elphick/personal/ffxiv-overlays/components/DragCorner.tsx";
-
-/* harmony default export */ __webpack_exports__["default"] = (function () {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      position: 'absolute',
-      background: 'grey',
-      width: 10,
-      height: 10,
-      bottom: 0,
-      right: 0,
-      opacity: 0.5
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 2
-    },
-    __self: this
-  });
-});
-
-/***/ }),
-
 /***/ "./components/Settings.tsx":
 /*!*********************************!*\
   !*** ./components/Settings.tsx ***!
@@ -199,20 +165,67 @@ function (_React$Component) {
     _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, (_getPrototypeOf2 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(Settings)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "state", {
-      isOpen: false
+      isOpen: false,
+      test: ''
     });
 
     return _this;
   }
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Settings, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var themeKey = this.props.themeKey;
+
+      try {
+        var test = window.localStorage.getItem("".concat(themeKey, "-test")) || '';
+        this.setState({
+          test: test
+        });
+      } catch (e) {
+        console.error('localstorage e', e);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      var children = this.props.children;
+      var _this$props = this.props,
+          children = _this$props.children,
+          themeKey = _this$props.themeKey;
       var isOpen = this.state.isOpen;
-      return isOpen ? react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, null, "Settings 3", react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+      return isOpen ? react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        style: {
+          background: 'rgba(100, 100, 100, 0.5)'
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 32
+        },
+        __self: this
+      }, "Settings", react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
+        type: "text",
+        onChange: function onChange(_ref) {
+          var target = _ref.target;
+
+          _this2.setState({
+            test: target.value
+          });
+
+          try {
+            window.localStorage.setItem("".concat(themeKey, "-test"), target.value);
+          } catch (e) {
+            console.error('localstorage e', e);
+          }
+        },
+        value: this.state.test,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 34
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
         onClick: function onClick() {
           return _this2.setState({
             isOpen: false
@@ -220,7 +233,7 @@ function (_React$Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 18
+          lineNumber: 42
         },
         __self: this
       }, "Close")) : react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
@@ -231,7 +244,7 @@ function (_React$Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
+          lineNumber: 44
         },
         __self: this
       }, children);
@@ -396,6 +409,17 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/keys */ "./no
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! core-js/library/fn/object/set-prototype-of */ "./node_modules/core-js/library/fn/object/set-prototype-of.js");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/values.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/values.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/object/values */ "./node_modules/core-js/library/fn/object/values.js");
 
 /***/ }),
 
@@ -1084,6 +1108,19 @@ module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/
 
 __webpack_require__(/*! ../../modules/es6.object.set-prototype-of */ "./node_modules/core-js/library/modules/es6.object.set-prototype-of.js");
 module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Object.setPrototypeOf;
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/fn/object/values.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/library/fn/object/values.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ../../modules/es7.object.values */ "./node_modules/core-js/library/modules/es7.object.values.js");
+module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Object.values;
 
 
 /***/ }),
@@ -3762,6 +3799,26 @@ var $entries = __webpack_require__(/*! ./_object-to-array */ "./node_modules/cor
 $export($export.S, 'Object', {
   entries: function entries(it) {
     return $entries(it);
+  }
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/modules/es7.object.values.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/core-js/library/modules/es7.object.values.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// https://github.com/tc39/proposal-object-values-entries
+var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
+var $values = __webpack_require__(/*! ./_object-to-array */ "./node_modules/core-js/library/modules/_object-to-array.js")(false);
+
+$export($export.S, 'Object', {
+  values: function values(it) {
+    return $values(it);
   }
 });
 
@@ -7052,10 +7109,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_sparklines__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(react_sparklines__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var _components_ActBase__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/ActBase */ "./components/ActBase.tsx");
 /* harmony import */ var _components_Settings__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/Settings */ "./components/Settings.tsx");
-/* harmony import */ var _components_DragCorner__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/DragCorner */ "./components/DragCorner.tsx");
-/* harmony import */ var _util_colours__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../util/colours */ "./util/colours.ts");
-/* harmony import */ var _util_roles__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../util/roles */ "./util/roles.ts");
-/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../util/types */ "./util/types.ts");
+/* harmony import */ var _util_colours__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../util/colours */ "./util/colours.ts");
+/* harmony import */ var _util_roles__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../util/roles */ "./util/roles.ts");
+/* harmony import */ var _util_types__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../util/types */ "./util/types.ts");
 
 
 
@@ -7072,7 +7128,7 @@ var _jsxFileName = "/Users/matthew.elphick/personal/ffxiv-overlays/pages/t/spark
 
 
 
-
+ // import SettingsPanel from '../../components/SettingsPanel';
 
 
 
@@ -7126,8 +7182,8 @@ function (_React$Component) {
           v = _ref5[1];
 
       var upperJob = (v.Job || '').toUpperCase();
-      var jobColour = Object(_util_colours__WEBPACK_IMPORTED_MODULE_17__["default"])(upperJob);
-      var role = _util_roles__WEBPACK_IMPORTED_MODULE_18__["jobRoleMap"][upperJob];
+      var jobColour = Object(_util_colours__WEBPACK_IMPORTED_MODULE_16__["default"])(upperJob);
+      var role = _util_roles__WEBPACK_IMPORTED_MODULE_17__["jobRoleMap"][upperJob];
       return react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement("div", {
         className: "".concat(role, "-sparks"),
         style: {
@@ -7213,34 +7269,18 @@ function (_React$Component) {
               v = _ref8[1];
 
           return filters.indexOf(k) > -1;
-        }).sort(function (_ref9, _ref10) {
-          var _ref11 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref9, 2),
-              _k1 = _ref11[0],
-              v1 = _ref11[1];
-
-          var _ref12 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref10, 2),
-              _k2 = _ref12[0],
-              v2 = _ref12[1];
-
-          return Number(v2.encdps) - Number(v1.encdps);
         }).map(_this2.renderCombatant) : null;
-        return react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(_components_Settings__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(SparkySettings, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 55
+            lineNumber: 54
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(styled_jsx_style__WEBPACK_IMPORTED_MODULE_11___default.a, {
           id: "2700580365",
-          dynamic: [_util_types__WEBPACK_IMPORTED_MODULE_19__["RoleColoursLight"].HEALER, _util_types__WEBPACK_IMPORTED_MODULE_19__["RoleColoursLight"].TANK, _util_types__WEBPACK_IMPORTED_MODULE_19__["RoleColoursLight"].DPS],
+          dynamic: [_util_types__WEBPACK_IMPORTED_MODULE_18__["RoleColoursLight"].HEALER, _util_types__WEBPACK_IMPORTED_MODULE_18__["RoleColoursLight"].TANK, _util_types__WEBPACK_IMPORTED_MODULE_18__["RoleColoursLight"].DPS],
           __self: this
-        }, "body{font-family:sans-serif;}svg polyline:first-of-type{fill-opacity:0.5 !important;}svg circle{fill:none !important;}.HEALER-sparks svg polyline:first-of-type{fill:".concat(_util_types__WEBPACK_IMPORTED_MODULE_19__["RoleColoursLight"].HEALER, " !important;}.TANK-sparks svg polyline:first-of-type{fill:").concat(_util_types__WEBPACK_IMPORTED_MODULE_19__["RoleColoursLight"].TANK, " !important;}.DPS-sparks svg polyline:first-of-type{fill:").concat(_util_types__WEBPACK_IMPORTED_MODULE_19__["RoleColoursLight"].DPS, " !important;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXR0aGV3LmVscGhpY2svcGVyc29uYWwvZmZ4aXYtb3ZlcmxheXMvcGFnZXMvdC9zcGFya3kudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQXVEaUMsQUFHMEMsQUFHSyxBQUdQLEFBR3dCLEFBR0EsQUFHQSxxQkFSL0MsRUFOQSxLQUdBLGlCQU1BLEFBR0EsQUFHQSIsImZpbGUiOiIvVXNlcnMvbWF0dGhldy5lbHBoaWNrL3BlcnNvbmFsL2ZmeGl2LW92ZXJsYXlzL3BhZ2VzL3Qvc3Bhcmt5LnRzeCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQge1NwYXJrbGluZXMsIFNwYXJrbGluZXNMaW5lfSBmcm9tICdyZWFjdC1zcGFya2xpbmVzJztcbmltcG9ydCBBY3RCYXNlLCB7U3RhdGUgYXMgQWN0QmFzZVN0YXRlfSBmcm9tICcuLi8uLi9jb21wb25lbnRzL0FjdEJhc2UnO1xuaW1wb3J0IFNldHRpbmdzIGZyb20gJy4uLy4uL2NvbXBvbmVudHMvU2V0dGluZ3MnO1xuaW1wb3J0IERyYWdDb3JuZXIgZnJvbSAnLi4vLi4vY29tcG9uZW50cy9EcmFnQ29ybmVyJztcbmltcG9ydCBqb2JDb2xvdXJzIGZyb20gJy4uLy4uL3V0aWwvY29sb3VycydcbmltcG9ydCB7am9iUm9sZU1hcH0gZnJvbSAnLi4vLi4vdXRpbC9yb2xlcyc7XG5pbXBvcnQge1JvbGVDb2xvdXJzTGlnaHR9IGZyb20gJy4uLy4uL3V0aWwvdHlwZXMnO1xuXG5pbnRlcmZhY2UgU3RhdGUge1xuICBlbmNPdmVyVGltZTogTWFwPHN0cmluZywgbnVtYmVyW10+O1xufVxuXG5leHBvcnQgZGVmYXVsdCBjbGFzcyBTcGFya3kgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQ8U3RhdGU+IHtcbiAgc3RhdGU6IFN0YXRlID0ge1xuICAgIGVuY092ZXJUaW1lOiBuZXcgTWFwKClcbiAgfTtcbiAgb25CZWNvbWVBY3RpdmUoKSB7XG4gICAgdGhpcy5zZXRTdGF0ZSh7ZW5jT3ZlclRpbWU6IG5ldyBNYXAoKX0pO1xuICB9XG4gIG9uT3ZlcmxheURhdGFVcGRhdGUgPSAoe0NvbWJhdGFudH06IEFjdEJhc2VTdGF0ZSkgPT4ge1xuICAgIGlmICghQ29tYmF0YW50KSByZXR1cm47XG4gICAgY29uc3Qge2VuY092ZXJUaW1lfSA9IHRoaXMuc3RhdGU7XG4gICAgT2JqZWN0LmVudHJpZXMoQ29tYmF0YW50KS5mb3JFYWNoKChbaywgdl0pID0+IHtcbiAgICAgIGVuY092ZXJUaW1lLnNldChrLCBbLi4uKGVuY092ZXJUaW1lLmdldChrKSB8fCBbXSkuc3BsaWNlKC0yNSksIE51bWJlcih2LmVuY2RwcyldLmZpbHRlcigoaSkgPT4gIWlzTmFOKGkpKSlcbiAgICB9KTtcbiAgICB0aGlzLnNldFN0YXRlKHtlbmNPdmVyVGltZX0pO1xuICB9XG4gIHJlbmRlckNvbWJhdGFudCA9IChbaywgdl0pID0+IHtcbiAgICBjb25zdCB1cHBlckpvYiA9ICh2LkpvYiB8fCAnJykudG9VcHBlckNhc2UoKTtcbiAgICBjb25zdCBqb2JDb2xvdXIgPSBqb2JDb2xvdXJzKHVwcGVySm9iKTtcbiAgICBjb25zdCByb2xlID0gam9iUm9sZU1hcFt1cHBlckpvYl07XG4gICAgcmV0dXJuIChcbiAgICAgIDxkaXYgY2xhc3NOYW1lPXtgJHtyb2xlfS1zcGFya3NgfSBzdHlsZT17e2Zsb2F0OiAnbGVmdCcsIHBhZGRpbmc6ICcwIDE1cHgnLCB0ZXh0QWxpZ246ICdjZW50ZXInLCB3aWR0aDogMjAwLCBjb2xvcjogJyNGRkZGRkYnLCBmb250V2VpZ2h0OiAnYm9sZCcsIHRleHRTaGFkb3c6IGAwIDAgNXB4ICR7am9iQ29sb3VyfWB9fSBrZXk9e3YubmFtZX0+XG4gICAgICAgIDxTcGFya2xpbmVzIGRhdGE9e3RoaXMuc3RhdGUuZW5jT3ZlclRpbWUuZ2V0KGspfSBoZWlnaHQ9ezUwfT5cbiAgICAgICAgICA8U3BhcmtsaW5lc0xpbmUgc3R5bGU9e3tmaWxsT3BhY2l0eTogMC41fX0gY29sb3I9e2pvYkNvbG91cn0gLz5cbiAgICAgICAgPC9TcGFya2xpbmVzPlxuICAgICAgICA8ZGl2IHN0eWxlPXt7Zm9udFNpemU6ICcwLjhlbSd9fT57di5uYW1lfSAoe3VwcGVySm9ifSk8L2Rpdj5cbiAgICAgICAgPGRpdj57di5lbmNkcHN9PC9kaXY+XG4gICAgICA8L2Rpdj5cbiAgICApXG4gIH1cbiAgcmVuZGVyICgpIHtcbiAgICByZXR1cm4gKFxuICAgICAgPEFjdEJhc2Ugb25PdmVybGF5RGF0YVVwZGF0ZT17dGhpcy5vbk92ZXJsYXlEYXRhVXBkYXRlfSBvbkJlY29tZUFjdGl2ZT17dGhpcy5vbkJlY29tZUFjdGl2ZX0+XG4gICAgICAgIHsoe0NvbWJhdGFudH0pID0+IHtcbiAgICAgICAgICBjb25zdCBmaWx0ZXJzID0gWydZT1UgMCcsICdZT1UnXVxuICAgICAgICAgIGNvbnN0IENvbWJhdGFudHMgPSBDb21iYXRhbnRcbiAgICAgICAgICAgID8gT2JqZWN0LmVudHJpZXMoQ29tYmF0YW50KVxuICAgICAgICAgICAgICAgIC5maWx0ZXIoKFtrLCB2XSkgPT4gZmlsdGVycy5pbmRleE9mKGspID4gLTEpXG4gICAgICAgICAgICAgICAgLnNvcnQoKFtfazEsIHYxXSwgW19rMiwgdjJdKSA9PiBOdW1iZXIodjIuZW5jZHBzKSAtIE51bWJlcih2MS5lbmNkcHMpKVxuICAgICAgICAgICAgICAgIC5tYXAodGhpcy5yZW5kZXJDb21iYXRhbnQpXG4gICAgICAgICAgICA6IG51bGw7XG4gICAgICAgICAgcmV0dXJuIChcbiAgICAgICAgICAgIDxTZXR0aW5nczx7YT86IHN0cmluZ30+PlxuICAgICAgICAgICAgICA8c3R5bGUgZ2xvYmFsIGpzeD57YFxuICAgICAgICAgICAgICAgIGJvZHkge1xuICAgICAgICAgICAgICAgICAgZm9udC1mYW1pbHk6IHNhbnMtc2VyaWY7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIHN2ZyBwb2x5bGluZTpmaXJzdC1vZi10eXBlIHtcbiAgICAgICAgICAgICAgICAgIGZpbGwtb3BhY2l0eTogMC41ICFpbXBvcnRhbnQ7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIHN2ZyBjaXJjbGUge1xuICAgICAgICAgICAgICAgICAgZmlsbDogbm9uZSAhaW1wb3J0YW50O1xuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAuSEVBTEVSLXNwYXJrcyBzdmcgcG9seWxpbmU6Zmlyc3Qtb2YtdHlwZSB7XG4gICAgICAgICAgICAgICAgICBmaWxsOiAke1JvbGVDb2xvdXJzTGlnaHQuSEVBTEVSfSAhaW1wb3J0YW50O1xuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAuVEFOSy1zcGFya3Mgc3ZnIHBvbHlsaW5lOmZpcnN0LW9mLXR5cGUge1xuICAgICAgICAgICAgICAgICAgZmlsbDogJHtSb2xlQ29sb3Vyc0xpZ2h0LlRBTkt9ICFpbXBvcnRhbnQ7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIC5EUFMtc3BhcmtzIHN2ZyBwb2x5bGluZTpmaXJzdC1vZi10eXBlIHtcbiAgICAgICAgICAgICAgICAgIGZpbGw6ICR7Um9sZUNvbG91cnNMaWdodC5EUFN9ICFpbXBvcnRhbnQ7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICBgfTwvc3R5bGU+XG4gICAgICAgICAgICAgIDxEcmFnQ29ybmVyIC8+XG4gICAgICAgICAgICAgIHtDb21iYXRhbnRzfVxuICAgICAgICAgICAgPC9TZXR0aW5ncz5cbiAgICAgICAgICApO1xuICAgICAgICB9fVxuICAgICAgPC9BY3RCYXNlPlxuICAgICk7XG4gIH1cbn1cbiJdfQ== */\n/*@ sourceURL=/Users/matthew.elphick/personal/ffxiv-overlays/pages/t/sparky.tsx */")), react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(_components_DragCorner__WEBPACK_IMPORTED_MODULE_16__["default"], {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 76
-          },
-          __self: this
-        }), Combatants);
+        }, "body{font-family:sans-serif;}svg polyline:first-of-type{fill-opacity:0.5 !important;}svg circle{fill:none !important;}.HEALER-sparks svg polyline:first-of-type{fill:".concat(_util_types__WEBPACK_IMPORTED_MODULE_18__["RoleColoursLight"].HEALER, " !important;}.TANK-sparks svg polyline:first-of-type{fill:").concat(_util_types__WEBPACK_IMPORTED_MODULE_18__["RoleColoursLight"].TANK, " !important;}.DPS-sparks svg polyline:first-of-type{fill:").concat(_util_types__WEBPACK_IMPORTED_MODULE_18__["RoleColoursLight"].DPS, " !important;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXR0aGV3LmVscGhpY2svcGVyc29uYWwvZmZ4aXYtb3ZlcmxheXMvcGFnZXMvdC9zcGFya3kudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQXNEaUMsQUFHMEMsQUFHSyxBQUdQLEFBR3dCLEFBR0EsQUFHQSxxQkFSL0MsRUFOQSxLQUdBLGlCQU1BLEFBR0EsQUFHQSIsImZpbGUiOiIvVXNlcnMvbWF0dGhldy5lbHBoaWNrL3BlcnNvbmFsL2ZmeGl2LW92ZXJsYXlzL3BhZ2VzL3Qvc3Bhcmt5LnRzeCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQge1NwYXJrbGluZXMsIFNwYXJrbGluZXNMaW5lfSBmcm9tICdyZWFjdC1zcGFya2xpbmVzJztcbmltcG9ydCBBY3RCYXNlLCB7U3RhdGUgYXMgQWN0QmFzZVN0YXRlfSBmcm9tICcuLi8uLi9jb21wb25lbnRzL0FjdEJhc2UnO1xuaW1wb3J0IFNldHRpbmdzIGZyb20gJy4uLy4uL2NvbXBvbmVudHMvU2V0dGluZ3MnO1xuLy8gaW1wb3J0IFNldHRpbmdzUGFuZWwgZnJvbSAnLi4vLi4vY29tcG9uZW50cy9TZXR0aW5nc1BhbmVsJztcbmltcG9ydCBqb2JDb2xvdXJzIGZyb20gJy4uLy4uL3V0aWwvY29sb3VycydcbmltcG9ydCB7am9iUm9sZU1hcH0gZnJvbSAnLi4vLi4vdXRpbC9yb2xlcyc7XG5pbXBvcnQge1JvbGVDb2xvdXJzTGlnaHR9IGZyb20gJy4uLy4uL3V0aWwvdHlwZXMnO1xuXG5pbnRlcmZhY2UgU3RhdGUge1xuICBlbmNPdmVyVGltZTogTWFwPHN0cmluZywgbnVtYmVyW10+O1xufVxuXG5leHBvcnQgZGVmYXVsdCBjbGFzcyBTcGFya3kgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQ8U3RhdGU+IHtcbiAgc3RhdGU6IFN0YXRlID0ge1xuICAgIGVuY092ZXJUaW1lOiBuZXcgTWFwKClcbiAgfTtcbiAgb25CZWNvbWVBY3RpdmUoKSB7XG4gICAgdGhpcy5zZXRTdGF0ZSh7ZW5jT3ZlclRpbWU6IG5ldyBNYXAoKX0pO1xuICB9XG4gIG9uT3ZlcmxheURhdGFVcGRhdGUgPSAoe0NvbWJhdGFudH06IEFjdEJhc2VTdGF0ZSkgPT4ge1xuICAgIGlmICghQ29tYmF0YW50KSByZXR1cm47XG4gICAgY29uc3Qge2VuY092ZXJUaW1lfSA9IHRoaXMuc3RhdGU7XG4gICAgT2JqZWN0LmVudHJpZXMoQ29tYmF0YW50KS5mb3JFYWNoKChbaywgdl0pID0+IHtcbiAgICAgIGVuY092ZXJUaW1lLnNldChrLCBbLi4uKGVuY092ZXJUaW1lLmdldChrKSB8fCBbXSkuc3BsaWNlKC0yNSksIE51bWJlcih2LmVuY2RwcyldLmZpbHRlcigoaSkgPT4gIWlzTmFOKGkpKSlcbiAgICB9KTtcbiAgICB0aGlzLnNldFN0YXRlKHtlbmNPdmVyVGltZX0pO1xuICB9XG4gIHJlbmRlckNvbWJhdGFudCA9IChbaywgdl0pID0+IHtcbiAgICBjb25zdCB1cHBlckpvYiA9ICh2LkpvYiB8fCAnJykudG9VcHBlckNhc2UoKTtcbiAgICBjb25zdCBqb2JDb2xvdXIgPSBqb2JDb2xvdXJzKHVwcGVySm9iKTtcbiAgICBjb25zdCByb2xlID0gam9iUm9sZU1hcFt1cHBlckpvYl07XG4gICAgcmV0dXJuIChcbiAgICAgIDxkaXYgY2xhc3NOYW1lPXtgJHtyb2xlfS1zcGFya3NgfSBzdHlsZT17e2Zsb2F0OiAnbGVmdCcsIHBhZGRpbmc6ICcwIDE1cHgnLCB0ZXh0QWxpZ246ICdjZW50ZXInLCB3aWR0aDogMjAwLCBjb2xvcjogJyNGRkZGRkYnLCBmb250V2VpZ2h0OiAnYm9sZCcsIHRleHRTaGFkb3c6IGAwIDAgNXB4ICR7am9iQ29sb3VyfWB9fSBrZXk9e3YubmFtZX0+XG4gICAgICAgIDxTcGFya2xpbmVzIGRhdGE9e3RoaXMuc3RhdGUuZW5jT3ZlclRpbWUuZ2V0KGspfSBoZWlnaHQ9ezUwfT5cbiAgICAgICAgICA8U3BhcmtsaW5lc0xpbmUgc3R5bGU9e3tmaWxsT3BhY2l0eTogMC41fX0gY29sb3I9e2pvYkNvbG91cn0gLz5cbiAgICAgICAgPC9TcGFya2xpbmVzPlxuICAgICAgICA8ZGl2IHN0eWxlPXt7Zm9udFNpemU6ICcwLjhlbSd9fT57di5uYW1lfSAoe3VwcGVySm9ifSk8L2Rpdj5cbiAgICAgICAgPGRpdj57di5lbmNkcHN9PC9kaXY+XG4gICAgICA8L2Rpdj5cbiAgICApXG4gIH1cbiAgcmVuZGVyICgpIHtcbiAgICByZXR1cm4gKFxuICAgICAgPEFjdEJhc2Ugb25PdmVybGF5RGF0YVVwZGF0ZT17dGhpcy5vbk92ZXJsYXlEYXRhVXBkYXRlfSBvbkJlY29tZUFjdGl2ZT17dGhpcy5vbkJlY29tZUFjdGl2ZX0+XG4gICAgICAgIHsoe0NvbWJhdGFudH0pID0+IHtcbiAgICAgICAgICBjb25zdCBmaWx0ZXJzID0gWydZT1UgMCcsICdZT1UnXVxuICAgICAgICAgIGNvbnN0IENvbWJhdGFudHMgPSBDb21iYXRhbnRcbiAgICAgICAgICAgID8gT2JqZWN0LmVudHJpZXMoQ29tYmF0YW50KVxuICAgICAgICAgICAgICAgIC5maWx0ZXIoKFtrLCB2XSkgPT4gZmlsdGVycy5pbmRleE9mKGspID4gLTEpXG4gICAgICAgICAgICAgICAgLm1hcCh0aGlzLnJlbmRlckNvbWJhdGFudClcbiAgICAgICAgICAgIDogbnVsbDtcbiAgICAgICAgICByZXR1cm4gKFxuICAgICAgICAgICAgPFNwYXJreVNldHRpbmdzPlxuICAgICAgICAgICAgICA8c3R5bGUgZ2xvYmFsIGpzeD57YFxuICAgICAgICAgICAgICAgIGJvZHkge1xuICAgICAgICAgICAgICAgICAgZm9udC1mYW1pbHk6IHNhbnMtc2VyaWY7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIHN2ZyBwb2x5bGluZTpmaXJzdC1vZi10eXBlIHtcbiAgICAgICAgICAgICAgICAgIGZpbGwtb3BhY2l0eTogMC41ICFpbXBvcnRhbnQ7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIHN2ZyBjaXJjbGUge1xuICAgICAgICAgICAgICAgICAgZmlsbDogbm9uZSAhaW1wb3J0YW50O1xuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAuSEVBTEVSLXNwYXJrcyBzdmcgcG9seWxpbmU6Zmlyc3Qtb2YtdHlwZSB7XG4gICAgICAgICAgICAgICAgICBmaWxsOiAke1JvbGVDb2xvdXJzTGlnaHQuSEVBTEVSfSAhaW1wb3J0YW50O1xuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAuVEFOSy1zcGFya3Mgc3ZnIHBvbHlsaW5lOmZpcnN0LW9mLXR5cGUge1xuICAgICAgICAgICAgICAgICAgZmlsbDogJHtSb2xlQ29sb3Vyc0xpZ2h0LlRBTkt9ICFpbXBvcnRhbnQ7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIC5EUFMtc3BhcmtzIHN2ZyBwb2x5bGluZTpmaXJzdC1vZi10eXBlIHtcbiAgICAgICAgICAgICAgICAgIGZpbGw6ICR7Um9sZUNvbG91cnNMaWdodC5EUFN9ICFpbXBvcnRhbnQ7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICBgfTwvc3R5bGU+XG4gICAgICAgICAgICAgIHtDb21iYXRhbnRzfVxuICAgICAgICAgICAgPC9TcGFya3lTZXR0aW5ncz5cbiAgICAgICAgICApO1xuICAgICAgICB9fVxuICAgICAgPC9BY3RCYXNlPlxuICAgICk7XG4gIH1cbn1cblxuY2xhc3MgU3Bhcmt5U2V0dGluZ3MgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQge1xuICBzdGF0ZSA9IHtcbiAgICBwbGF5ZXJGaWx0ZXJzOiBbXVxuICB9O1xuICByZW5kZXIgKCkge1xuICAgIHJldHVybiAoXG4gICAgICA8U2V0dGluZ3M8e3BsYXllckZpbHRlcnM6IHN0cmluZ1tdfT4gdGhlbWVLZXk9J3NwYXJreSc+XG4gICAgICAgIHsvKjxTZXR0aW5nc1BhbmVsPlxuICAgICAgICAgIHtbLi4udGhpcy5zdGF0ZS5wbGF5ZXJGaWx0ZXJzLCAnJ10ubWFwKChmLCBpKSA9PiAoXG4gICAgICAgICAgICA8ZGl2IGtleT17YCR7aX1gfT5cbiAgICAgICAgICAgICAgPHNwYW4+UGxheWVyIEZpbHRlcjo8L3NwYW4+XG4gICAgICAgICAgICAgIDxpbnB1dFxuICAgICAgICAgICAgICAgIHR5cGU9J3RleHQnXG4gICAgICAgICAgICAgICAgb25DaGFuZ2U9eyh7dGFyZ2V0fSkgPT4ge1xuICAgICAgICAgICAgICAgICAgY29uc3QgYXIgPSBbXS5jb25jYXQodGhpcy5zdGF0ZS5wbGF5ZXJGaWx0ZXJzKTtcbiAgICAgICAgICAgICAgICAgIGlmICh0YXJnZXQudmFsdWUubGVuZ3RoID09PSAwKSB7XG4gICAgICAgICAgICAgICAgICAgIGFyLnNwbGljZShpLCAxKTtcbiAgICAgICAgICAgICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgICAgICAgICAgIGFyW2ldID0gdGFyZ2V0LnZhbHVlO1xuICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgdGhpcy5zZXRTdGF0ZSh7cGxheWVyRmlsdGVyczogYXJ9KVxuICAgICAgICAgICAgICAgIH19XG4gICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICApKX1cbiAgICAgICAgICAgICAgPC9TZXR0aW5nc1BhbmVsPiovfVxuICAgICAgICB7dGhpcy5wcm9wcy5jaGlsZHJlbn1cbiAgICAgIDwvU2V0dGluZ3M+XG4gICAgKTtcbiAgfVxufSJdfQ== */\n/*@ sourceURL=/Users/matthew.elphick/personal/ffxiv-overlays/pages/t/sparky.tsx */")), Combatants);
       });
     }
   }]);
@@ -7249,6 +7289,48 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_12___default.a.Component);
 
 
+
+var SparkySettings =
+/*#__PURE__*/
+function (_React$Component2) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_9__["default"])(SparkySettings, _React$Component2);
+
+  function SparkySettings() {
+    var _getPrototypeOf3;
+
+    var _this3;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__["default"])(this, SparkySettings);
+
+    for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+      args[_key3] = arguments[_key3];
+    }
+
+    _this3 = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_6__["default"])(this, (_getPrototypeOf3 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_7__["default"])(SparkySettings)).call.apply(_getPrototypeOf3, [this].concat(args)));
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_8__["default"])(_this3), "state", {
+      playerFilters: []
+    });
+
+    return _this3;
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__["default"])(SparkySettings, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(_components_Settings__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        themeKey: "sparky",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 90
+        },
+        __self: this
+      }, this.props.children);
+    }
+  }]);
+
+  return SparkySettings;
+}(react__WEBPACK_IMPORTED_MODULE_12___default.a.Component);
 
 /***/ }),
 
@@ -7289,16 +7371,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_array_from__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_array_from__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_values__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/values */ "./node_modules/@babel/runtime-corejs2/core-js/object/values.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_values__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_values__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./types */ "./util/types.ts");
+
+
 
 
 
 
 
 function createCombatant(_, i) {
+  var job = _types__WEBPACK_IMPORTED_MODULE_5__["JobAbbreviations"][_babel_runtime_corejs2_core_js_object_values__WEBPACK_IMPORTED_MODULE_4___default()(_types__WEBPACK_IMPORTED_MODULE_5__["JobAbbreviations"])[Math.floor(Math.random() * _babel_runtime_corejs2_core_js_object_values__WEBPACK_IMPORTED_MODULE_4___default()(_types__WEBPACK_IMPORTED_MODULE_5__["JobAbbreviations"]).length)]];
+
   return Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])({}, "YOU ".concat(i), {
     "n": "\n",
     "t": "\t",
-    "name": "YOU ".concat(i),
+    "name": i === 0 ? 'YOU' : "".concat(job, " ").concat(i),
     "duration": "00:00",
     "DURATION": "0",
     "damage": "0",
@@ -7354,7 +7443,7 @@ function createCombatant(_, i) {
     "Last10DPS": "20",
     "Last30DPS": "0",
     "Last60DPS": "0",
-    "Job": "Mnk",
+    "Job": job,
     "ParryPct": "6%",
     "BlockPct": "0%",
     "IncToHit": "92.73",
@@ -7483,13 +7572,22 @@ var jobRoleMap = (_jobRoleMap = {}, Object(_babel_runtime_corejs2_helpers_esm_de
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/date/now */ "./node_modules/@babel/runtime-corejs2/core-js/date/now.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _createCombatant__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./createCombatant */ "./util/createCombatant.ts");
-/* harmony import */ var _createEncounter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./createEncounter */ "./util/createEncounter.ts");
-/* harmony import */ var _random__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./random */ "./util/random.ts");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_entries__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/entries */ "./node_modules/@babel/runtime-corejs2/core-js/object/entries.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_entries__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_entries__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/date/now */ "./node_modules/@babel/runtime-corejs2/core-js/date/now.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _createCombatant__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./createCombatant */ "./util/createCombatant.ts");
+/* harmony import */ var _createEncounter__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./createEncounter */ "./util/createEncounter.ts");
+/* harmony import */ var _random__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./random */ "./util/random.ts");
+
+
+
+
 
 
 
@@ -7497,7 +7595,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var OVERLAY_EVENT = 'onOverlayDataUpdate';
 
-var START_TIME = _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_1___default()();
+var START_TIME = _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_5___default()();
 
 function millisToMinutesAndSeconds(millis) {
   var minutes = Math.floor(millis / 60000);
@@ -7507,30 +7605,47 @@ function millisToMinutesAndSeconds(millis) {
 
 function getEvent() {
   return {
-    Encounter: Object(_createEncounter__WEBPACK_IMPORTED_MODULE_3__["default"])(),
-    Combatant: Object(_createCombatant__WEBPACK_IMPORTED_MODULE_2__["createCombatants"])(8),
+    Encounter: Object(_createEncounter__WEBPACK_IMPORTED_MODULE_7__["default"])(),
+    Combatant: Object(_createCombatant__WEBPACK_IMPORTED_MODULE_6__["createCombatants"])(8),
     isActive: true
   };
 }
 
 function updateEvent(e) {
-  var duration_ms = _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_1___default()() - START_TIME;
+  var duration_ms = _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_5___default()() - START_TIME;
   var duration = millisToMinutesAndSeconds(duration_ms);
   e.detail.Encounter.damage = 0;
   e.detail.Encounter.duration = duration;
   e.detail.Encounter.DURATION = duration_ms;
 
-  _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0___default()(e.detail.Combatant).forEach(function (k) {
+  _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_4___default()(e.detail.Combatant).forEach(function (k, i) {
     e.detail.Combatant[k].duration = duration;
     e.detail.Combatant[k].DURATION = duration_ms;
-    e.detail.Combatant[k].damage = Object(_random__WEBPACK_IMPORTED_MODULE_4__["randomBetween"])(2000, 9000);
-    e.detail.Combatant[k].DPS = Object(_random__WEBPACK_IMPORTED_MODULE_4__["randomBetween"])(2000, 9000);
-    e.detail.Combatant[k].encdps = Object(_random__WEBPACK_IMPORTED_MODULE_4__["randomBetween"])(2000, 9000);
+    e.detail.Combatant[k].damage = Object(_random__WEBPACK_IMPORTED_MODULE_8__["randomBetween"])(2000, 9000);
+    e.detail.Combatant[k].DPS = Object(_random__WEBPACK_IMPORTED_MODULE_8__["randomBetween"])(2000, 9000);
+    e.detail.Combatant[k].encdps = Object(_random__WEBPACK_IMPORTED_MODULE_8__["randomBetween"])(2000, 9000);
     e.detail.Encounter.damage += e.detail.Combatant[k].damage;
     e.detail.Encounter.dps += e.detail.Combatant[k].dps;
     e.detail.Encounter.encdps += e.detail.Combatant[k].encdps;
   });
 
+  e.detail.Combatant = _babel_runtime_corejs2_core_js_object_entries__WEBPACK_IMPORTED_MODULE_3___default()(e.detail.Combatant).sort(function (_ref, _ref2) {
+    var _ref3 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref, 2),
+        _k1 = _ref3[0],
+        v1 = _ref3[1];
+
+    var _ref4 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref2, 2),
+        _k2 = _ref4[0],
+        v2 = _ref4[1];
+
+    return Number(v2.encdps) - Number(v1.encdps);
+  }).reduce(function (obj, _ref5) {
+    var _ref6 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref5, 2),
+        k = _ref6[0],
+        v = _ref6[1];
+
+    return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, obj, Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])({}, k, v));
+  }, {});
   return e.detail;
 }
 
@@ -7541,6 +7656,7 @@ function updateEvent(e) {
   });
   document.dispatchEvent(baseEvent);
   if (window.location.search.includes('debug')) console.info('displatch:start', baseEvent.detail);
+  if (window.location.search.includes('initialOnly')) return;
   return setInterval(function () {
     var e = new CustomEvent(OVERLAY_EVENT, {
       detail: updateEvent(baseEvent)
@@ -7751,7 +7867,7 @@ var RoleColoursDark;
 
 /***/ }),
 
-/***/ 0:
+/***/ 2:
 /*!**********************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Ft%2Fsparky&absolutePagePath=%2FUsers%2Fmatthew.elphick%2Fpersonal%2Fffxiv-overlays%2Fpages%2Ft%2Fsparky.tsx ***!
   \**********************************************************************************************************************************************************/
@@ -7774,5 +7890,5 @@ module.exports = dll_7aff549c98b978433226;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=sparky.js.map
