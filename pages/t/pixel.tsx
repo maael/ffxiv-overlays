@@ -1,6 +1,7 @@
 import React from 'react';
 import ActBase from '../../components/ActBase';
 import jobColours from '../../util/colours'
+import qualityUrl from '../../util/qualityUrl';
 
 const styles = {
   combatantContainer: {
@@ -31,7 +32,7 @@ export default class Pixel extends React.Component {
     const jobColour = jobColours(upperJob);
     return (
       <div style={{...styles.combatantContainer, textShadow: `0 0 5px ${jobColour}`}} key={v.name}>
-        <div style={{...styles.jobPixelArt, backgroundImage: `url('/static/pixel/${upperJob}.png')`}} />
+        <div style={{...styles.jobPixelArt, backgroundImage: `url(${qualityUrl(`/static/pixel/${upperJob}.png`)})`}} />
         <div style={{position: 'relative'}}>
           <div style={{fontSize: '0.9em'}}>{v.name} ({(v.Job || '').toUpperCase()})</div>
           <div>{v.encdps}</div>
