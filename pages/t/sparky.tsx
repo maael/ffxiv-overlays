@@ -92,9 +92,6 @@ export default class Sparky extends React.Component<State> {
                 }
               `}</style>
               {Combatants}
-              <>
-                {this.state.height} {this.state.width}
-              </>
             </SparkySettings>
           );
         }}
