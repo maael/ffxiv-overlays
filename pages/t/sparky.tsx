@@ -2,19 +2,37 @@ import React from 'react';
 import {Sparklines, SparklinesLine} from 'react-sparklines';
 import ActBase, {State as ActBaseState} from '../../components/ActBase';
 import Settings from '../../components/Settings';
-// import SettingsPanel from '../../components/SettingsPanel';
+import SettingsPanel from '../../components/SettingsPanel';
 import jobColours from '../../util/colours'
 import {jobRoleMap} from '../../util/roles';
 import {RoleColoursLight} from '../../util/types';
 
 interface State {
   encOverTime: Map<string, number[]>;
+  height: number;
+  width: number;
 }
 
 export default class Sparky extends React.Component<State> {
   state: State = {
-    encOverTime: new Map()
+    encOverTime: new Map(),
+    height: 0,
+    width: 0,
   };
+  componentDidMount () {
+    if (typeof window !== 'undefined') {
+      this.setState({height: window.innerHeight, width: window.innerWidth});
+      window.addEventListener('resize', this.onResize);
+    }
+  }
+  componentWillUnmount () {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('resize', this.onResize);
+    }
+  }
+  onResize = ({target}) => {
+    this.setState({height: target.innerHeight, width: target.innerWidth});
+  }
   onBecomeActive() {
     this.setState({encOverTime: new Map()});
   }
@@ -27,12 +45,13 @@ export default class Sparky extends React.Component<State> {
     this.setState({encOverTime});
   }
   renderCombatant = ([k, v]) => {
+    const {height, width} = this.state;
     const upperJob = (v.Job || '').toUpperCase();
     const jobColour = jobColours(upperJob);
     const role = jobRoleMap[upperJob];
     return (
-      <div className={`${role}-sparks`} style={{float: 'left', padding: '0 15px', textAlign: 'center', width: 200, color: '#FFFFFF', fontWeight: 'bold', textShadow: `0 0 5px ${jobColour}`}} key={v.name}>
-        <Sparklines data={this.state.encOverTime.get(k)} height={50}>
+      <div className={`${role}-sparks`} style={{height, width: width - 45 || 0, float: 'left', padding: '0 15px', textAlign: 'center', color: '#FFFFFF', fontWeight: 'bold', textShadow: `0 0 5px ${jobColour}`}} key={v.name}>
+        <Sparklines data={this.state.encOverTime.get(k)} height={height - 50 || 0} width={width - 45 || 0}>
           <SparklinesLine style={{fillOpacity: 0.5}} color={jobColour} />
         </Sparklines>
         <div style={{fontSize: '0.8em'}}>{v.name} ({upperJob})</div>
@@ -73,6 +92,9 @@ export default class Sparky extends React.Component<State> {
                 }
               `}</style>
               {Combatants}
+              <>
+                {this.state.height} {this.state.width}
+              </>
             </SparkySettings>
           );
         }}
@@ -88,7 +110,7 @@ class SparkySettings extends React.Component {
   render () {
     return (
       <Settings<{playerFilters: string[]}> themeKey='sparky'>
-        {/*<SettingsPanel>
+        <SettingsPanel>
           {[...this.state.playerFilters, ''].map((f, i) => (
             <div key={`${i}`}>
               <span>Player Filter:</span>
@@ -106,7 +128,7 @@ class SparkySettings extends React.Component {
               />
             </div>
           ))}
-              </SettingsPanel>*/}
+              </SettingsPanel>
         {this.props.children}
       </Settings>
     );
