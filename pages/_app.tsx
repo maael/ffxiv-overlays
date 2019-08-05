@@ -7,6 +7,11 @@ class OverlaysApp extends App {
 
     return (
       <Container>
+        <style jsx global>{`
+          html, body {
+            overflow: 'hidden'
+          }
+        `}</style>
         <Component {...pageProps} />
         <DragCorner />
       </Container>
