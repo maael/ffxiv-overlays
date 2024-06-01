@@ -51,7 +51,8 @@ export default () => (
       <li><Link href='https://billyvg.github.io/OverlayPlugin-themes/laiglinne-ff-dmgmeter.html'>laiglinne</Link> <Link href='https://github.com/billyvg/OverlayPlugin-themes'>GitHub</Link></li>
       <li><Link href='https://billyvg.github.io/OverlayPlugin-themes/Torgan.MiniParse.html'>Torgan</Link> <Link href='https://github.com/billyvg/OverlayPlugin-themes'>GitHub</Link></li>
       <li><Link href='https://billyvg.github.io/OverlayPlugin-themes/enilia-overlay.html'>enilia</Link> <Link href='https://github.com/billyvg/OverlayPlugin-themes'>GitHub</Link></li>
-      <li><Link href='https://billyvg.github.io/OverlayPlugin-themes/Bylanders.html'>Bylanders</Link> <Link href='https://github.com/billyvg/OverlayPlugin-themes'>GitHub</Link></li>
+      <li><Link href='https://billyvg.github.io/OverlayPlugin-themes/Bylanders.html'>Bylanders</Link> <Link href='https://github.com/billyvg/OverlayPlugin-themes'>GitHub</Link></li>      
+      <li><Link href='https://goldenchrysus.github.io/ffxiv/ember-overlay/'>Ember</Link> <Link href='https://github.com/GoldenChrysus/ffxiv-ember-overlay'>GitHub</Link></li>
     </ul>
   </>
 );
